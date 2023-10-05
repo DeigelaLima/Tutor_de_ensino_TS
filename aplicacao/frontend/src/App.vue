@@ -1,12 +1,21 @@
 <template>
-  <nav>
-    <!-- <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> -->
-    <!-- <router-view></router-view> -->
-  </nav>
-  <router-view/>
+  <v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-</style>
+export default defineComponent({
+  name: 'App',
+
+  data () {
+    return {
+      //
+    }
+  },
+})
+</script>
