@@ -44,24 +44,32 @@
         <v-footer app>
         <v-row justify="center">
           <v-col cols="3"> 
-            <v-btn block rounded="lg" size="large" class="green-button white--text">
-              Assertion Roulette
-            </v-btn>
+            <router-link to="/escolher-exercicios">
+              <v-btn block rounded="lg" size="large" class="green-button white--text">
+                Assertion Roulette
+              </v-btn>
+            </router-link>
           </v-col>
           <v-col cols="3">
-            <v-btn block rounded="lg" size="large" class="green-button white--text">
-              Duplication Assert
-            </v-btn>
+            <router-link to="/escolher-exercicios">
+              <v-btn block rounded="lg" size="large" class="green-button white--text">
+                Duplication Assert
+              </v-btn>
+            </router-link>
           </v-col>
           <v-col cols="3">
-            <v-btn block rounded="lg" size="large" class="green-button white--text">
-              Eager Test
-            </v-btn>
+            <router-link to="/escolher-exercicios">
+              <v-btn block rounded="lg" size="large" class="green-button white--text">
+                Eager Test
+              </v-btn>
+            </router-link>
           </v-col>
           <v-col cols="3">
-            <v-btn block rounded="lg" size="large" class="green-button white--text">
-              Ignored Test
-            </v-btn>
+            <router-link to="/escolher-exercicios">
+              <v-btn block rounded="lg" size="large" class="green-button white--text">
+                Ignored Test
+              </v-btn>
+            </router-link>
           </v-col>
         </v-row>
       </v-footer>
@@ -73,8 +81,7 @@
 </script>
   
 <style scoped>
-
-  .bar-nav{
+  .bar-nav {
     background-color: rgba(86, 175, 119, 1);
   }
   .home-container {
