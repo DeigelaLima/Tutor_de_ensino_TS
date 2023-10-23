@@ -13,7 +13,6 @@
                 <v-img src="@/assets/ph_info-boldehSobreIsso.svg" alt="Logo-Sobre" />
               </v-avatar>
             </v-row>
-
         </v-app-bar>
 
         <v-container>
