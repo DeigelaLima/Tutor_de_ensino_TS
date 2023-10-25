@@ -30,6 +30,7 @@ container {
 .image-size {
   max-width: 60vh;
   width: 60vh;
+  padding: 280px;
 }
 .img-container {
   display: flex;

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="home-container">
     <v-container>
-      <v-row align="start" justify="space-between">
+      <v-row>
         <!-- Coluna da esquerda para o texto -->
         <v-col cols="12" sm="6">
           <v-card-text class="text-left-bemVindo">
@@ -78,29 +78,33 @@ const typesOfTestSmells = ref<TestSmell[]>([
 
 /* imagem homePage */
 .image-size {
-  max-width: 180px;
+  padding: 320px;
 }
 
 /* Botões */
 .green-button {
   background-color: rgba(86, 175, 119, 1);
   color: white;
-  font-size: 10px;
-  padding: 2px 8px;
+  font-size: 20px;
+  padding: 40px 8px;
+  margin-bottom: 15px;
 }
 .text-left-bemVindo {
-  font-size: 18px;
+  font-size: 30px;
+  text-align: left;
   text-align: center;
   color: black;
+  padding: 80px;
 }
 
 .text-left-refatoracao {
-  font-size: 8px;
+  font-size: 20px;
+  text-align: left;
   text-align: center;
   color: black;
 }
 .choice {
-  font-size: 12px;
+  font-size: 30px;
   color: black;
   text-align: center;
 }

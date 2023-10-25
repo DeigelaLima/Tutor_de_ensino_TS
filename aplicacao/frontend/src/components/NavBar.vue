@@ -1,6 +1,6 @@
 <template>
   <v-app-bar app class="bar-nav">
-    <v-avatar size="50" class="ml-1">
+    <v-avatar size="90" class="ml-1">
       <v-img src="@/assets/clarity_bug-solidJoanita.svg" alt="Logo" />
     </v-avatar>
     <v-app-bar-title class="text-left-tutor ml-1"
@@ -10,7 +10,7 @@
     <!-- Sobre -->
     <v-row align="center" class="flex-row-reverse">
       <v-card-text class="text-right-sobre mr-8">Sobre</v-card-text>
-      <v-avatar size="15" class="mr-1">
+      <v-avatar size="25" class="mr-1">
         <v-img src="@/assets/ph_info-boldehSobreIsso.svg" alt="Logo-Sobre" />
       </v-avatar>
     </v-row>
@@ -24,15 +24,17 @@ export default {};
 <style scoped>
 .bar-nav {
   background-color: rgba(86, 175, 119, 1);
+  height: 100px;
+  padding: 20px;
 }
 
 .text-right-sobre {
-  font-size: 15px;
+  font-size: 25px;
   color: white;
 }
 
 .text-left-tutor {
-  font-size: 20px;
+  font-size: 35px;
   color: white;
 }
 </style>
