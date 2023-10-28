@@ -9,15 +9,19 @@
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "@vueup/vue-quill": "^1.2.0",
+    "codemirror": "^6.0.1",
     "core-js": "^3.8.3",
     "roboto-fontface": "*",
     "vue": "^3.2.13",
+    "vue-codemirror": "^6.1.1",
     "vue-router": "^4.0.3",
     "vuetify": "^3.3.20",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",
+    "@types/codemirror": "^5.60.10",
     "@types/webfontloader": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",

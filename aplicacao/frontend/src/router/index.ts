@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomePage from '@/views/HomePage.vue';
+import HomePage from '../views/HomePage.vue'
+import ExercisePage from '../views/ExercisePage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,8 +11,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/chooseexercise/:type',
     name: 'chooseExercise',
-
     component: () => import(/* webpackChunkName: "about" */ '../views/ChooseExercises.vue'),
+  },
+  {
+    path: '/exercise',
+    name: 'exercisePage',
+    component: ExercisePage
   }
 ]
 
