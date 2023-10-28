@@ -1,7 +1,11 @@
 <template>
     <v-container fluid class="container">
         <v-row>
-            <Codemirror style="height: 70vh; width: 50vw; padding: 2rem 0 0 2rem" />
+            <v-col>
+                <h1 align="center">{{ exerciseTitle }}</h1>
+                <Codemirror style="height: 70vh; width: 50vw;" />
+                <h5>{{ exerciseLink }}</h5>
+            </v-col>
             <v-col>
                 <v-card-text align="center">
                     <h1>{{ smellName }}</h1>
@@ -25,10 +29,16 @@ import ButtonComponent from '../components/ButtonComponent.vue';
 
 const smellDescription = ref("Esse tipo de Test Smell ocorre quando um método de teste é suprimido de execução usando recursos fornecidos pelo JUnit 4. No entanto, essa abordagem de Ignored Test pode resultar em sobrecarga durante o tempo de compilação, além de aumentar a complexidade e dificultar a compreensão do código.");   
 const smellName = ref("Ignored Test")
-
+const exerciseTitle = ref("Teste")
+const exerciseLink = ref("Exercise repo link")
 </script>
 
 <style scoped>
+
+    .container {
+        margin-top: 30px;
+        height: 100vh;
+    }
     .foot-buttons{
         padding-top: 2rem;
     }
