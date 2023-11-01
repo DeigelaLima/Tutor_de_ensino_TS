@@ -3,7 +3,7 @@
         <v-row>
             <v-col>
                 <h1 align="center">{{ exerciseTitle }}</h1>
-                <Codemirror style="height: 70vh; width: 50vw;" />
+                <Codemirror style="height: 60vh; width: 50vw;" />
                 <h5>{{ exerciseLink }}</h5>
             </v-col>
             <v-col>
@@ -27,7 +27,10 @@ import { ref } from 'vue';
 import { Codemirror } from 'vue-codemirror';
 import ButtonComponent from '../components/ButtonComponent.vue';
 
-const smellDescription = ref("Esse tipo de Test Smell ocorre quando um método de teste é suprimido de execução usando recursos fornecidos pelo JUnit 4. No entanto, essa abordagem de Ignored Test pode resultar em sobrecarga durante o tempo de compilação, além de aumentar a complexidade e dificultar a compreensão do código.");   
+const smellDescription = ref("Esse tipo de Test Smell ocorre quando um método de teste é suprimido de execução "+
+                             "usando recursos fornecidos pelo JUnit 4. No entanto, essa abordagem de Ignored "+
+                             "Test pode resultar em sobrecarga durante o tempo de compilação, além de aumentar "+
+                             "a complexidade e dificultar a compreensão do código.");   
 const smellName = ref("Ignored Test")
 const exerciseTitle = ref("Teste")
 const exerciseLink = ref("Exercise repo link")
