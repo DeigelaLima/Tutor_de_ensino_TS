@@ -1,0 +1,6 @@
+@Test
+public void testConstructorThrowable() {
+    final EncoderException e = new EncoderException(t);
+    assertEquals(t.getClass().getName(), e.getMessage());
+    assertEquals(t, e.getCause());
+}

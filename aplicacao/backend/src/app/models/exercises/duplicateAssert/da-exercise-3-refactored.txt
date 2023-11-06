@@ -1,0 +1,25 @@
+@Test
+public void testDecodeObjects() throws Exception {
+     final QuotedPrintableCodec qpcodec = new QuotedPrintableCodec();
+     final String plain = "1+1 =3D 2";
+     String decoded = (String) qpcodec.decode((Object) plain);
+     assertEquals("1+1 = 2", decoded, "Basic quoted-printable decoding test");
+
+     final Object result = qpcodec.decode((Object) null);
+     assertNull(result, "Decoding a null Object should return null");
+
+     assertThrows(DecoderException.class, () ->  qpcodec.decode(Double.valueOf(3.0d)),
+                   "Trying to url encode a Double object should cause an exception.");
+}
+
+@Test
+public void testDecodeObjectsExtracted() throws Exception {
+     final QuotedPrintableCodec qpcodec = new QuotedPrintableCodec();
+     final String plain = "1+1 =3D 2";
+     String decoded = (String) qpcodec.decode((Object) plain);
+
+	final byte[] plainBA = plain.getBytes(StandardCharsets.UTF_8);
+     final byte[] decodedBA = (byte[]) qpcodec.decode((Object) plainBA);
+     decoded = new String(decodedBA);
+     assertEquals("1+1 = 2", decoded, "Basic quoted-printable decoding test");
+}
