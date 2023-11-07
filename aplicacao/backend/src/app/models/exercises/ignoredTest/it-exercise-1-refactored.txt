@@ -1,0 +1,19 @@
+    @Test
+    public void testRandomUnsymmetricMatrix() {
+        for (int run = 0; run < 100; run++) {
+            Random r = new Random(System.currentTimeMillis());
+
+            // matrix size
+            int size = r.nextInt(20) + 4;
+
+            double[][] data = new double[size][size];
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    data[i][j] = r.nextInt(100);
+                }
+            }
+
+            RealMatrix m = MatrixUtils.createRealMatrix(data);
+            checkUnsymmetricMatrix(m);
+        }
+    }

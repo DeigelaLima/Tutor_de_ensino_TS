@@ -1,0 +1,14 @@
+@Test
+public void testUTF8RoundTrip() throws Exception {
+
+     final String ru_msg = constructString(RUSSIAN_STUFF_UNICODE);
+     final String ch_msg = constructString(SWISS_GERMAN_STUFF_UNICODE);
+
+     final BCodec bcodec = new BCodec(CharEncoding.UTF_8);
+
+     assertEquals("=?UTF-8?B?0JLRgdC10Lxf0L/RgNC40LLQtdGC?=",    bcodec.encode(ru_msg));
+     assertEquals("=?UTF-8?B?R3LDvGV6aV96w6Rtw6Q=?=", bcodec.encode(ch_msg));
+
+     assertEquals(ru_msg, bcodec.decode(bcodec.encode(ru_msg)));
+     assertEquals(ch_msg, bcodec.decode(bcodec.encode(ch_msg)));
+}

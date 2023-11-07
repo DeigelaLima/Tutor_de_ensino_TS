@@ -1,0 +1,12 @@
+@Test
+public void testDefaultEncoding() throws Exception {
+    
+       final String plain = "Hello there!";
+       final URLCodec urlCodec = new URLCodec("UnicodeBig");
+       urlCodec.encode(plain); // To work around a weird quirk in Java 1.2.2
+       final String encoded1 = urlCodec.encode(plain, "UnicodeBig");
+       final String encoded2 = urlCodec.encode(plain);
+
+       assertEquals(encoded1, encoded2);
+       this.validateState(urlCodec);
+}

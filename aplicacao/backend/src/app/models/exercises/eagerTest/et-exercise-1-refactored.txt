@@ -1,0 +1,11 @@
+@Test
+public void testConstructor0() {
+    final EncoderException e = new EncoderException();
+    assertNull(e.getMessage());
+}
+
+@Test
+public void testConstructor_getCause() {
+    final EncoderException e = new EncoderException();
+    assertNull(e.getCause());
+}

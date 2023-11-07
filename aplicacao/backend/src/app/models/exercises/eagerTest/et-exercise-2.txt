@@ -1,0 +1,6 @@
+@Test
+public void testConstructorString() {
+    final EncoderException e = new EncoderException(MSG);
+    assertEquals(MSG, e.getMessage());
+    assertNull(e.getCause());
+}
