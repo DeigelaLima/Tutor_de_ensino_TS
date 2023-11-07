@@ -1,3 +1,4 @@
+require('express-async-errors');
 const express = require("express");
 const tsRoutes = require("./routes/tsRoutes");
 const bodyParser = require("body-parser");
