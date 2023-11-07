@@ -32,11 +32,7 @@
     <!-- Botões -->
     <v-footer app>
       <v-row justify="center">
-        <v-col
-          cols="3"
-          v-for="(testSmell, index) in typesOfTestSmells"
-          :key="index"
-        >
+        <v-col cols="3" v-for="(testSmell, index) in testSmells" :key="index">
           <router-link
             :to="`/chooseexercise/${testSmell.id}`"
             class="text-decoration-none text-reset"
@@ -57,18 +53,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { TestSmell } from "./../models/TestSmellModel";
+import { onMounted, ref } from "vue";
+import { getTestSmells } from "@/services/TestSmellService";
 
-type TestSmell = {
-  id: number;
-  name: string;
-};
-const typesOfTestSmells = ref<TestSmell[]>([
-  { id: 1, name: "Assertion Roulette" },
-  { id: 2, name: "Duplication Assert" },
-  { id: 3, name: "Eager Test" },
-  { id: 4, name: "Ignored Test" },
-]);
+const testSmells = ref<TestSmell[]>([]);
+
+onMounted(async () => {
+  testSmells.value = getTestSmells();
+});
 </script>
 
 <style scoped>
