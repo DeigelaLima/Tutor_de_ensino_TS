@@ -1,5 +1,5 @@
 <template>
-  <v-btn block rounded="xs" size="x-large" class="green-button"
+  <v-btn block rounded="xs" class="green-button"
     >Exercício {{ numberExercise }}</v-btn
   >
 </template>
@@ -17,6 +17,10 @@ defineProps<{
   font-size: 20px;
   padding: 2px 8px;
   justify-content: flex-start;
-  margin: 5px;
+  margin-top: 15px;
+}
+
+.v-btn.v-btn--density-default {
+  height: 75px;
 }
 </style>
