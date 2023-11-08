@@ -1,11 +1,11 @@
 <template>
   <v-container fluid class="home-container">
-    <v-container>
+    <v-container style="min-width: 100vw; margin: 0;">
       <v-row>
         <!-- Coluna da esquerda para o texto -->
         <v-col cols="12" sm="6">
           <v-card-text class="text-left-bemVindo">
-            <p>Bem-vindo ao tutor de ensino!</p>
+            <h2>Bem-vindo ao tutor de ensino!</h2>
           </v-card-text>
           <v-card-text class="text-left-refatoracao">
             <p>
@@ -25,29 +25,30 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <v-col class="choice">
-      <p>Escolha um tipo de Test Smell para começar:</p>
-    </v-col>
     <!-- Botões -->
     <v-footer app>
-      <v-row justify="center">
-        <v-col cols="3" v-for="(testSmell, index) in testSmells" :key="index">
-          <router-link
-            :to="`/chooseexercise/${testSmell.id}`"
-            class="text-decoration-none text-reset"
-          >
-            <v-btn
-              block
-              rounded="lg"
-              size="large"
-              class="green-button white--text"
-            >
-              {{ testSmell.name }}
-            </v-btn>
-          </router-link>
+      <v-col>
+        <v-col class="choice">
+          <p>Escolha um tipo de Test Smell para começar:</p>
         </v-col>
-      </v-row>
+        <v-row justify="center">
+          <v-col cols="3" v-for="(testSmell, index) in testSmells" :key="index">
+            <router-link
+              :to="`/chooseexercise/${testSmell.id}`"
+              class="text-decoration-none text-reset"
+            >
+              <v-btn
+                block
+                rounded="lg"
+                size="large"
+                class="green-button white--text"
+              >
+                {{ testSmell.name }}
+              </v-btn>
+            </router-link>
+          </v-col>
+        </v-row>
+      </v-col>
     </v-footer>
   </v-container>
 </template>
@@ -74,7 +75,7 @@ onMounted(async () => {
 
 /* imagem homePage */
 .image-size {
-  padding: 320px;
+  size: 30em;
 }
 
 /* Botões */
@@ -103,5 +104,6 @@ onMounted(async () => {
   font-size: 30px;
   color: black;
   text-align: center;
+  margin-bottom:  20px;
 }
 </style>
