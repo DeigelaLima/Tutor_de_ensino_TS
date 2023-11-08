@@ -17,6 +17,15 @@ class TsService {
 
         return exercise.text;
     }
+    findExerciseObjectById(id) {
+        const exercise = exercises.allExercises.find(e => e.id == id);
+
+        if (!exercise) {
+            throw new NotFound('Exercise Not Found');
+        }
+
+        return exercise;
+    }
     findExerciseRefactoredById(id) {
         const exercise = exercises.allExercises.find(e => e.id == id);
 

@@ -27,7 +27,7 @@ tsRouter.use(cors(corsOptions));
 tsRouter.get('/exercises', TsController.getAllExercises)
 tsRouter.get('/exercises/:id', TsController.getExerciseByCategoryId)
 
-tsRouter.get('/exercise/:id', TsController.getExerciseById)
+tsRouter.get('/exercise/:id', TsController.getExerciseObjectById)
 tsRouter.get('/exerciseRefactored/:id', TsController.getExerciseRefactoredById)
 
 tsRouter.put('/exercise/:id', typeBody, TsController.refactorExercise)
