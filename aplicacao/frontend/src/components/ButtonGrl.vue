@@ -17,7 +17,7 @@ defineProps<{
   font-size: 20px;
   padding: 2px 8px;
   justify-content: flex-start;
-  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .v-btn.v-btn--density-default {

@@ -1,10 +1,13 @@
 <template>
   <v-container fluid class="container">
     <v-row>
-      <Codemirror style="height: 70vh; width: 50vw; padding: 2rem 0 0 2rem" />
+      <Codemirror
+        :model-value="exerciseChoose"
+        style="height: 70vh; width: 50vw; padding: 2rem 0 0 2rem"
+      />
       <v-col>
         <v-card-text align="center">
-          <p class="description">{{ exerciseChoose?.exercise }}</p>
+          <p class="description"></p>
           <h3>
             No código ao lado existe este tipo de test smell, você pode
             refatorá-lo?
@@ -25,17 +28,16 @@ import { ref } from "vue";
 import { Codemirror } from "vue-codemirror";
 import ButtonComponent from "../components/ButtonComponent.vue";
 
-import { Exercise } from "@/models/TestSmellModel";
 import { getExercisesbyTheirId } from "@/services/ExerciseService";
 import { onBeforeRouteUpdate, useRoute } from "vue-router";
 
 const route = useRoute();
 let id = Number(route.params.idSmell);
-const exerciseChoose = ref<Exercise>();
+let exerciseChoose = ref<string>();
 
-async function fetchExercise(id: number): Promise<Exercise | null> {
+async function fetchExercise(id: number) {
   const result = await getExercisesbyTheirId(id);
-  return result as Exercise;
+  exerciseChoose.value = result;
 }
 
 fetchExercise(id);
