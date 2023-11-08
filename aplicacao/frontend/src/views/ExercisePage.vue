@@ -27,7 +27,6 @@
 import { ref } from "vue";
 import { Codemirror } from "vue-codemirror";
 import ButtonComponent from "../components/ButtonComponent.vue";
-
 import { getExercisesbyTheirId } from "@/services/ExerciseService";
 import { onBeforeRouteUpdate, useRoute } from "vue-router";
 
@@ -37,7 +36,7 @@ let exerciseChoose = ref<string>();
 
 async function fetchExercise(id: number) {
   const result = await getExercisesbyTheirId(id);
-  exerciseChoose.value = result;
+  exerciseChoose.value = result.text;
 }
 
 fetchExercise(id);
