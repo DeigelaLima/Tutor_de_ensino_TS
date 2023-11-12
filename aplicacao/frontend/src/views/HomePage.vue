@@ -16,7 +16,7 @@
         </v-col>
 
         <!-- Coluna da direita para a imagem -->
-        <v-col cols="12" sm="6">
+        <v-col cols="12" sm="5">
           <v-img
             src="@/assets/Group6homePage.svg"
             alt="Bem-vindo"
@@ -75,7 +75,8 @@ onMounted(async () => {
 
 /* imagem homePage */
 .image-size {
-  size: 30em;
+  size: 20em;
+  margin-top: 80px
 }
 
 /* Botões */
@@ -87,7 +88,7 @@ onMounted(async () => {
   margin-bottom: 15px;
 }
 .text-left-bemVindo {
-  font-size: 30px;
+  font-size: 35px;
   text-align: left;
   text-align: center;
   color: black;
@@ -95,7 +96,7 @@ onMounted(async () => {
 }
 
 .text-left-refatoracao {
-  font-size: 20px;
+  font-size: 25px;
   text-align: left;
   text-align: center;
   color: black;
