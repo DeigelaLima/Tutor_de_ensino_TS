@@ -7,5 +7,8 @@ export interface TestSmell {
 
 export interface Exercise {
     idSmell?: number[];
-    exercise?: string;
+    categoryId?: number;
+    categoryName?: String;
+    text?: string;
+    textRefactored?: string;
 }
