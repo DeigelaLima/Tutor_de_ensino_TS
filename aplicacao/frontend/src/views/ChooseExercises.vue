@@ -15,7 +15,10 @@
             :to="`/chooseexercise/${testSmellChoose?.id}/${id}`"
             class="text-decoration-none text-reset"
           >
-            <ButtonGrl :number-exercise="++numberExercise"></ButtonGrl>
+            <ButtonGrl
+              :number-exercise="++numberExercise"
+              class="button"
+            ></ButtonGrl>
           </router-link>
         </div>
       </v-col>
@@ -65,7 +68,7 @@ container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 8vh;
+  margin-top: 2.5vh;
 }
 .context-of-description-and-exercises {
   display: flex;
@@ -73,6 +76,11 @@ container {
   justify-content: space-evenly;
   margin-top: 5vh;
 }
+
+.button:not(:first-child()) {
+  margin-top: 15px;
+}
+
 .image-size {
   max-width: 60vh;
   width: 60vh;

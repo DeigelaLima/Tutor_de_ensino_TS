@@ -19,6 +19,13 @@ class TsController {
         return res.status(200).set({'Content-Type':'text/plaint'}).send(exercise);
        
     }
+    getExerciseObjectById(req, res) {
+        const { id } = req.params;
+        const service = new TsService();
+        const exercise = service.findExerciseObjectById(id);
+
+        return res.status(200).set({'Content-Type':'text/plaint'}).send(exercise);
+    }
 
     getExerciseRefactoredById(req, res) {
         const { id } = req.params;
