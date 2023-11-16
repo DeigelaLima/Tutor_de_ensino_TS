@@ -1,9 +1,7 @@
 <template>
-  <v-col cols="12" sm="6" md="5" class="py-1">
-    <v-btn block rounded="xs" size="x-large" class="green-button"
-      >Exercício {{ numberExercise }}</v-btn
-    >
-  </v-col>
+  <v-btn block rounded="xs" class="green-button"
+    >Exercício {{ numberExercise }}</v-btn
+  >
 </template>
 
 <script setup lang="ts">
@@ -19,5 +17,10 @@ defineProps<{
   font-size: 20px;
   padding: 2px 8px;
   justify-content: flex-start;
+  margin-top: 15px;
+}
+
+.v-btn.v-btn--density-default {
+  height: 75px;
 }
 </style>
