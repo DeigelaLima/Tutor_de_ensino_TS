@@ -4,15 +4,15 @@
       <v-row>
         <!-- Coluna da esquerda para o texto -->
         <v-col cols="12" sm="6">
-            <v-card-text class="text-left-bemVindo">
-              <p>Bem-vindo ao tutor de ensino!</p>
-            </v-card-text>
-            <v-card-text class="text-left-refatoracao">
-              <p>
-                Aqui você vai encontrar exercícios de teste de unidade<br />
-                para a refatoração de test smells.
-              </p>
-            </v-card-text>
+          <v-card-text class="text-left-bemVindo">
+            <h2>Bem-vindo ao tutor de ensino!</h2>
+          </v-card-text>
+          <v-card-text class="text-left-refatoracao">
+            <p>
+              Aqui você vai encontrar exercícios de teste de unidade<br />
+              para a refatoração de test smells.
+            </p>
+          </v-card-text>
         </v-col>
 
         <!-- Coluna da direita para a imagem -->
@@ -88,8 +88,7 @@ onMounted(async () => {
   margin-bottom: 15px;
 }
 .text-left-bemVindo {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 35px;
   text-align: left;
   text-align: center;
   color: black;
