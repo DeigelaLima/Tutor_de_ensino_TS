@@ -17,10 +17,6 @@
   </v-app-bar>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style scoped>
 .bar-nav {
   background-color: rgba(86, 175, 119, 1);
