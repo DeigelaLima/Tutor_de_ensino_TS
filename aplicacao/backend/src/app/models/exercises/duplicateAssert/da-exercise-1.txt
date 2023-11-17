@@ -1,10 +1,13 @@
 @Test
-public void testMd2HexLength() {
-      String hashMe = "this is some string that is longer than 32 characters";
-      String hash = DigestUtils.md2Hex(getBytesUtf8(hashMe));
-      assertEquals(32, hash.length());
+public void testEncodeHexByteArrayHelloWorldLowerCaseHex() {
+      final byte[] b = StringUtils.getBytesUtf8("Hello World");
+      final String expected = "48656c6c6f20576f726c64";
+      char[] actual;
 
-      hashMe = "length < 32";
-      hash = DigestUtils.md2Hex(getBytesUtf8(hashMe));
-      assertEquals(32, hash.length());
+      actual = Hex.encodeHex(b);
+      assertEquals(expected, new String(actual));
+      actual = Hex.encodeHex(b, true);
+      assertEquals(expected, new String(actual));
+      actual = Hex.encodeHex(b, false);
+      assertNotEquals(expected, new String(actual));
 }
