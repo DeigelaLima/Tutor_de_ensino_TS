@@ -1,25 +1,19 @@
-    @Ignore@Test
-    public void testSampling() {
-        final double[] weights = { 0.3, 0.7 };
-        final double[][] means = { { -1.5, 2.0 },
-                                   { 4.0, 8.2 } };
-        final double[][][] covariances = { { { 2.0, -1.1 },
-                                             { -1.1, 2.0 } },
-                                           { { 3.5, 1.5 },
-                                             { 1.5, 3.5 } } };
-        final MixtureMultivariateNormalDistribution d =
-            new MixtureMultivariateNormalDistribution(weights, means, covariances);
-        final MultivariateRealDistribution.Sampler sampler =
-            d.createSampler(RandomSource.WELL_19937_C.create(50));
+@Test
+@Ignore
+public void testRandomUnsymmetricMatrix() {
+    for (int run = 0; run < 100; run++) {
+         Random r = new Random(System.currentTimeMillis());
 
-        final double[][] correctSamples = getCorrectSamples();
-        final int n = correctSamples.length;
-        final double[][] samples = AbstractMultivariateRealDistribution.sample(n, sampler);
+         int size = r.nextInt(20) + 4;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < samples[i].length; j++) {
-                Assert.assertEquals("sample[" + j + "]",
-                                    correctSamples[i][j], samples[i][j], 1e-16);
-            }
-        }
-    }
+         double[][] data = new double[size][size];
+         for (int i = 0; i < size; i++) {
+             for (int j = 0; j < size; j++) {
+                 data[i][j] = r.nextInt(100);
+             }
+         }
+
+         RealMatrix m = MatrixUtils.createRealMatrix(data);
+         checkUnsymmetricMatrix(m);
+     }
+}
