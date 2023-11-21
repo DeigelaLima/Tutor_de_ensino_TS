@@ -1,25 +1,36 @@
 <template>
   <v-container fluid class="container">
     <v-row>
+      <v-row class="back-button">
+        <BackButton :onclick="() => router.push('/')"/>
+      </v-row>
+      <v-row class="header">
+        <h1>{{ title }}</h1>
+        <p class="description"> {{ description }}</p>
+      </v-row>
       <v-col>
-        <v-row class="header">
-          <BackButton :onclick="() => router.push('/')"/>
-          <h2>{{ title }}</h2>
-        </v-row>
         <Codemirror
           :model-value="exerciseChoose"
-          style="height: 70vh; width: 50vw; margin: 2rem 0 0 2rem"
+          style="height: 65vh; width: 50vw; margin: 2rem 0 0 2rem"
           @change=" (value) => handleChange(value)"
         />
       </v-col>
       <v-col>
         <v-card-text align="center">
-          <p class="description"></p>
           <h3>
             No código ao lado existe este tipo de test smell, você pode
             refatorá-lo?
           </h3>
-          <ButtonComponent text="Técnicas" :disable="false" />
+          <h3 class="step-by-step">Passo a passo</h3>
+          <div v-if="tried">
+            <h3 v-if="feedback" class="feedback_true" >Excelente trabalho!
+              O test smell foi refatorado com sucesso, deixando o código de teste mais limpo.
+            </h3>
+            <h3 v-else class="feedback_false" >Tem algo errado...
+              
+            </h3>
+          </div>
+
         </v-card-text>
       </v-col>
     </v-row>
@@ -48,13 +59,23 @@ const refactorState = ref(true);
 const refactoredExercise = ref<string>();
 const userExercise = ref<string>();
 const title = ref<string>();
+const description = ref<string>();
+const feedback = ref(false);
+const tried = ref(false);
 
 function handleRefactor() {
-  checkRefactor() ? nextState.value = false : nextState.value = true;
+  tried.value = true;
+  if(checkRefactor()){
+    feedback.value = true;
+    nextState.value = false;
+  } else{
+    feedback.value = false;
+  }
 }
 
 function checkRefactor() {
-  return refactoredExercise.value === userExercise.value;
+  const regex = /\s/g;
+  return refactoredExercise.value?.replace(regex, '') === userExercise.value?.replace(regex, '');
 }
 
 function handleChange(value: string) {
@@ -68,7 +89,7 @@ async function fetchExercise(id: number) {
   exerciseChoose.value = result.text;
   refactoredExercise.value = result.textRefactored;
   title.value = result.categoryName;
-
+  description.value = result.description;
 }
 
 fetchExercise(id);
@@ -83,19 +104,42 @@ onBeforeRouteUpdate(async (to, from) => {
 
 <style scoped>
 
+.feedback_true {
+  padding-top: 2rem;
+  color: green;
+}
+
+.feedback_false {
+  padding-top: 2rem;
+  color: red;
+}
 .foot-buttons {
   margin-top: 0rem;
+  margin-bottom: 2rem
 }
 
 .header {
   display: flex;
-  width: 60%;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-button {
+  display: flex;
+  justify-content: start;
   align-items: center;
   padding: 3em 0em 0em 3em;
 }
 
 .description {
-  padding: 2rem 0;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 10px;
+  background-color: #d9f3ed;
+
+}
+
+.step-by-step {
+  padding-top: 1rem;
 }
 </style>
