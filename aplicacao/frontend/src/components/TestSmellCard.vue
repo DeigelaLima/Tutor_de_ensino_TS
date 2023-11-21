@@ -1,6 +1,6 @@
 <template>
   <div class="container-text">
-    <h1 style="margin-bottom: 20px">
+    <h1 class="margin-description-smell">
       {{ name }}
     </h1>
     <h4>{{ description }}</h4>
@@ -23,5 +23,9 @@ defineProps<Omit<TestSmell, "id">>();
 .container-text > h4 {
   text-align: justify;
   text-justify: inter-word;
+}
+
+.margin-description-smell {
+  margin-bottom: 20px;
 }
 </style>
