@@ -6,8 +6,7 @@ export const TestSmells = [
         "dificultando a identificação da causa de um erro em caso de falha. "+
         "Para refatorar, deve-se incluir mensagens explicativas como argumentos opcionais nas assertions, "+
         "uma prática recomendada para melhorar a compreensão dos testes, esclarecendo o propósito de cada assertion "+
-        "e facilitando a manutenção do código. A falta dessa documentação adequada pode complicar a identificação precisa do assertion "+
-        "responsável por uma falha, tornando a depuração mais desafiadora durante a manutenção do código.",
+        "e facilitando a manutenção do código.",
         exercise: { idSmell: [10, 11, 12] }
     },
     { 
@@ -23,8 +22,7 @@ export const TestSmells = [
         name: "Eager Test", 
         description: "Ocorre quando um método de teste verifica diversos métodos do objeto que está sendo testado. "+
         "Esses testes são de difícil compreensão e leitura, tornando-se menos eficazes como documentação. "+
-        "Para solucionar essa situação, recomenda-se refatorar, extraindo o método de teste e separando os assertions em métodos de teste distintos. "+
-        "Além disso, eles tendem a criar dependências entre os testes, o que torna o processo de manutenção mais desafiador e complexo.",
+        "Para solucionar essa situação, recomenda-se refatorar, extraindo o método de teste e separando os assertions em métodos de teste distintos.",
         exercise: {idSmell: [4, 5, 6]}
     },
     {
@@ -33,10 +31,9 @@ export const TestSmells = [
         description: "Ocorre quando um método de teste é suprimido da execução. "+
         "Contudo, essa abordagem de Ignored Test pode resultar em sobrecarga durante o tempo de compilação, "+
         "além de aumentar a complexidade e dificultar a compreensão do código. "+
-        "Ao marcar métodos de teste com @Ignore(), há o risco de deixar lacunas na cobertura dos testes, "+
+        "Ao utilizar a anotação @Ignore(), há o risco de deixar lacunas na cobertura dos testes, "+
         "pois partes cruciais do código podem não ser adequadamente verificadas. "+
-        "A refatoração do Ignored Test consiste, primeiramente, em remover a anotação @Ignore(). "+
-        "Em seguida, é necessário analisar se as instruções presentes no método de teste são relevantes e aplicáveis.",
+        "A refatoração do Ignored Test consiste em remover a anotação @Ignore() do teste de unidade.",
         exercise: { idSmell: [1, 2, 3] }
     },
 ];
