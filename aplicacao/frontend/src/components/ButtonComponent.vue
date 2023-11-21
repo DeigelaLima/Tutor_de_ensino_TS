@@ -1,5 +1,5 @@
 <template>
-    <v-btn min-width="200px" block rounded="xs" size="large" class="green-button" :disabled="disable" :onclick="onclick">
+    <v-btn class="exercise-button" :disabled="disable" :onclick="onclick">
         {{ text }}
     </v-btn>
 </template>
@@ -13,11 +13,13 @@ defineProps<{
 </script>
 
 <style scoped>
-    .green-button {
+    
+    .exercise-button {
         background-color: rgba(86, 175, 119, 1);
         color: white;
-        max-width: 100px;
-        margin-top: 3rem;
+        height: 40px !important;
+        width: 170px;
+        margin-top: 2rem;
         text-align: center;
     }
 </style>
