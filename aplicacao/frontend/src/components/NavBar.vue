@@ -7,12 +7,13 @@
       >Tutor de Ensino</v-app-bar-title
     >
     <v-spacer></v-spacer>
+   
     <!-- Sobre -->
     <v-row align="center" class="flex-row-reverse">
-      <v-card-text class="text-right-sobre mr-8">Sobre</v-card-text>
-      <v-avatar size="25" class="mr-1">
+      <v-avatar size="30" class="mr-1">
         <v-img src="@/assets/ph_info-boldehSobreIsso.svg" alt="Logo-Sobre" />
       </v-avatar>
+      <v-card-text class="text-right-sobre mr-1">Sobre</v-card-text>
     </v-row>
   </v-app-bar>
 </template>
@@ -25,8 +26,9 @@
 }
 
 .text-right-sobre {
-  font-size: 25px;
+  font-size: 28px;
   color: white;
+  text-align: right;
 }
 
 .text-left-tutor {
