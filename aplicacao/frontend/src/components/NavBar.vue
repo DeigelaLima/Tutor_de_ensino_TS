@@ -1,11 +1,13 @@
 <template>
   <v-app-bar app class="bar-nav">
-    <v-avatar size="90" class="ml-1">
-      <v-img src="@/assets/clarity_bug-solidJoanita.svg" alt="Logo" />
-    </v-avatar>
-    <v-app-bar-title class="text-left-tutor ml-1"
-      >Tutor de Ensino</v-app-bar-title
-    >
+    <button class="logo-button" @click="$router.push('/')">
+      <v-avatar size="90" class="ml-1">
+        <v-img src="@/assets/clarity_bug-solidJoanita.svg" alt="Logo" />
+      </v-avatar>
+      <v-app-bar-title class="text-left-tutor ml-1"
+        >Tutor de Ensino</v-app-bar-title
+      >
+    </button>
     <v-spacer></v-spacer>
    
     <!-- Sobre -->
@@ -25,6 +27,11 @@
   padding: 20px;
 }
 
+.logo-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .text-right-sobre {
   font-size: 28px;
   color: white;

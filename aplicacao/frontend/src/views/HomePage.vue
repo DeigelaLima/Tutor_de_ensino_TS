@@ -32,7 +32,7 @@
           <p>Escolha um tipo de Test Smell para começar:</p>
         </v-col>
         <v-row justify="center">
-          <v-col cols="3" v-for="(testSmell, index) in testSmells" :key="index">
+          <v-col class="smell-type" cols="3" v-for="(testSmell, index) in testSmells" :key="index">
             <router-link
               :to="`/chooseexercise/${testSmell.id}`"
               class="text-decoration-none text-reset"
@@ -41,9 +41,11 @@
                 block
                 rounded="lg"
                 size="large"
-                class="green-button white--text"
+                class="green-button"
               >
-                {{ testSmell.name }}
+                <p>
+                  {{ testSmell.name }}
+                </p>
               </v-btn>
             </router-link>
           </v-col>
@@ -79,6 +81,7 @@ onMounted(async () => {
   margin-top: 80px
 }
 
+
 /* Botões */
 .green-button {
   background-color: rgba(86, 175, 119, 1);
@@ -86,6 +89,10 @@ onMounted(async () => {
   font-size: 20px;
   padding: 40px 8px;
   margin-bottom: 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .text-left-bemVindo {
   font-size: 35px;
