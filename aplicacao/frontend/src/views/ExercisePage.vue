@@ -21,22 +21,16 @@
             No código ao lado existe este tipo de test smell, você pode
             refatorá-lo?
           </h3>
-          <h3 class="step-by-step">Passo a passo</h3>
-          <div v-if="tried">
-            <h3 v-if="feedback" class="feedback_true" >Excelente trabalho!
-              O test smell foi refatorado com sucesso, deixando o código de teste mais limpo.
-            </h3>
-            <h3 v-else class="feedback_false" >Tem algo errado...
-              
-            </h3>
-          </div>
-
+          <h3 class="steps-title">Passo a passo</h3>
+          <p class="intro-step">{{ introStep }}</p>
+          <ul class="step-by-step">
+            <p class="step" :key="step" v-for="step in formatedSteps"> {{ "Passo" + step }} </p>
+          </ul>
         </v-card-text>
       </v-col>
     </v-row>
     <v-row class="foot-buttons" justify="space-around">
-      <ButtonComponent text="Refatorar" :disable="refactorState" :onclick="handleRefactor" />
-      <ButtonComponent text="Próximo" :disable="nextState" :onclick="() => router.push('/')" />
+      <ButtonPopup text="Refatorar" :disable="refactorState" :onclick="handleRefactor" :refactor="feedback"/>
     </v-row>
   </v-container>
 </template>
@@ -45,7 +39,7 @@
 import BackButton from "@/components/BackButton.vue";
 import { ref } from "vue";
 import { Codemirror } from "vue-codemirror";
-import ButtonComponent from "../components/ButtonComponent.vue";
+import ButtonPopup from "../components/ButtonPopup.vue"
 import { getExercisesbyTheirId } from "@/services/ExerciseService";
 import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 
@@ -54,20 +48,19 @@ const router = useRouter();
 const route = useRoute();
 let id = Number(route.params.idSmell);
 let exerciseChoose = ref<string>();
-const nextState = ref(true);
 const refactorState = ref(true);
 const refactoredExercise = ref<string>();
 const userExercise = ref<string>();
 const title = ref<string>();
 const description = ref<string>();
 const feedback = ref(false);
-const tried = ref(false);
+const steps = ref<string>();
+const introStep = ref<string>()
+const formatedSteps = ref<string[]>([]);
 
 function handleRefactor() {
-  tried.value = true;
   if(checkRefactor()){
     feedback.value = true;
-    nextState.value = false;
   } else{
     feedback.value = false;
   }
@@ -83,6 +76,15 @@ function handleChange(value: string) {
   userExercise.value = value
 }
 
+function formatString(text:  string | undefined){
+  if(text === undefined){
+    return
+  }
+  let subArrays = text.split("Passo");
+  introStep.value = subArrays.shift();
+  formatedSteps.value = subArrays;
+}
+
 
 async function fetchExercise(id: number) {
   const result = await getExercisesbyTheirId(id);
@@ -90,6 +92,8 @@ async function fetchExercise(id: number) {
   refactoredExercise.value = result.textRefactored;
   title.value = result.categoryName;
   description.value = result.description;
+  steps.value = result.refactoration;
+  formatString(steps.value);
 }
 
 fetchExercise(id);
@@ -104,14 +108,11 @@ onBeforeRouteUpdate(async (to, from) => {
 
 <style scoped>
 
-.feedback_true {
-  padding-top: 2rem;
-  color: green;
+.step {
+  padding-bottom: 1rem;
 }
-
-.feedback_false {
-  padding-top: 2rem;
-  color: red;
+.intro-step {
+  padding-bottom: 1rem;
 }
 .foot-buttons {
   margin-top: 0rem;
@@ -140,6 +141,11 @@ onBeforeRouteUpdate(async (to, from) => {
 }
 
 .step-by-step {
-  padding-top: 1rem;
+  text-align: start;
+  width: 500px;
+}
+
+.steps-title {
+  padding: 1rem 0rem;
 }
 </style>
