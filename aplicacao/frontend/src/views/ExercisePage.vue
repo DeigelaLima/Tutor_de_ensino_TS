@@ -17,15 +17,18 @@
       </v-col>
       <v-col>
         <v-card-text align="center">
-          <h3>
-            No código ao lado existe este tipo de test smell, você pode
-            refatorá-lo?
-          </h3>
-          <h3 class="steps-title">Passo a passo</h3>
-          <p class="intro-step">{{ introStep }}</p>
-          <ul class="step-by-step">
-            <p class="step" :key="step" v-for="step in formatedSteps"> {{ "Passo" + step }} </p>
-          </ul>
+          <h2 class="intro-step">
+            Para iniciar a refatoração do teste de unidade que contém o 'smell',<br>você deve seguir os seguintes passos: 
+          </h2>
+          <div class="card-step">
+            <h1 class="steps-title">Passo a passo</h1>
+            <ul class="step-by-step">
+              <p class="step" :key="step" v-for="step in formatedSteps"> {{ "Passo" + step }} </p>
+            </ul>
+            <ul class="step-by-step">
+                <p class="step" :key="assert" v-for="assert in formatedAsserts"> {{ "Assertion" + assert }} </p>
+            </ul>
+          </div>
         </v-card-text>
       </v-col>
     </v-row>
@@ -55,8 +58,8 @@ const title = ref<string>();
 const description = ref<string>();
 const feedback = ref(false);
 const steps = ref<string>();
-const introStep = ref<string>()
 const formatedSteps = ref<string[]>([]);
+const formatedAsserts = ref<string[]>([]);
 
 function handleRefactor() {
   if(checkRefactor()){
@@ -76,13 +79,28 @@ function handleChange(value: string) {
   userExercise.value = value
 }
 
-function formatString(text:  string | undefined){
+function formatAssertString(text:  string | undefined){
+  if( text === undefined) return
+  let subArrays = text.split("Assertion");
+  subArrays.shift();
+  formatedAsserts.value = subArrays;
+}
+
+function formatStepString(text:  string | undefined){
   if(text === undefined){
     return
   }
-  let subArrays = text.split("Passo");
-  introStep.value = subArrays.shift();
-  formatedSteps.value = subArrays;
+  let subArrays;
+  if(text.indexOf("Assertion") === -1){
+    subArrays = text.split("Passo");
+    subArrays.shift()
+    formatedSteps.value = subArrays;
+  } else {
+    let newText: string = text.substring(0, text.indexOf("Assertion"))
+    subArrays = newText.split("Passo");
+    subArrays.shift();
+    formatedSteps.value = subArrays;
+  }
 }
 
 
@@ -93,7 +111,8 @@ async function fetchExercise(id: number) {
   title.value = result.categoryName;
   description.value = result.description;
   steps.value = result.refactoration;
-  formatString(steps.value);
+  formatStepString(steps.value);
+  formatAssertString(steps.value);
 }
 
 fetchExercise(id);
@@ -108,11 +127,18 @@ onBeforeRouteUpdate(async (to, from) => {
 
 <style scoped>
 
+.card-step {
+  background-color: #d9f3ed;
+  border-radius: 10px;
+  padding-bottom: 2rem;
+}
+
 .step {
   padding-bottom: 1rem;
 }
 .intro-step {
-  padding-bottom: 1rem;
+  text-align: justify;
+  padding-bottom: 2rem;
 }
 .foot-buttons {
   margin-top: 0rem;
@@ -129,7 +155,7 @@ onBeforeRouteUpdate(async (to, from) => {
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 3em 0em 0em 3em;
+  padding: 2em 0em 0em 3em;
 }
 
 .description {
@@ -137,12 +163,13 @@ onBeforeRouteUpdate(async (to, from) => {
   margin: 2rem;
   border-radius: 10px;
   background-color: #d9f3ed;
-
+  font-size: 20px;
 }
 
 .step-by-step {
   text-align: start;
-  width: 500px;
+  width: 600px;
+  font-size: 20px;
 }
 
 .steps-title {
