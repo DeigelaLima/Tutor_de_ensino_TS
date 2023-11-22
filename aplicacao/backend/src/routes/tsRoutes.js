@@ -9,6 +9,7 @@ const tsRouter = Router();
 const whitelist = [
     'http://localhost:8080',
     'http://localhost:3000',
+    'https://tutor-de-ensino-ts.vercel.app'
   ];
   
   const corsOptions = {
