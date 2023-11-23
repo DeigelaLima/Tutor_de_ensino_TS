@@ -2,38 +2,51 @@
   <v-container fluid class="container">
     <v-row>
       <v-row class="back-button">
-        <BackButton :onclick="() => router.push('/')"/>
+        <BackButton :onclick="() => router.push('/')" />
       </v-row>
       <v-row class="header">
         <h1>{{ title }}</h1>
-        <p class="description"> {{ description }}</p>
+        <p class="description">{{ description }}</p>
       </v-row>
       <v-col>
         <Codemirror
           :model-value="exerciseChoose"
           style="height: 65vh; width: 50vw; margin: 2rem 0 0 2rem"
-          @change=" (value) => handleChange(value)"
+          @change="(value) => handleChange(value)"
         />
       </v-col>
       <v-col>
         <v-card-text align="center">
           <h2 class="intro-step">
-            Para iniciar a refatoração do teste de unidade que contém o 'smell',<br>você deve seguir os seguintes passos: 
+            Para iniciar a refatoração do teste de unidade que contém o
+            'smell',<br />você deve seguir os seguintes passos:
           </h2>
           <div class="card-step">
             <h1 class="steps-title">Passo a passo</h1>
             <ul class="step-by-step">
-              <p class="step" :key="step" v-for="step in formatedSteps"> {{ "Passo" + step }} </p>
+              <p class="step" :key="step" v-for="step in formatedSteps">
+                {{ "Passo" + step }}
+              </p>
             </ul>
             <ul class="step-by-step">
-                <p class="step" :key="assert" v-for="assert in formatedAsserts"> {{ "Assertion" + assert }} </p>
+              <p class="step" :key="assert" v-for="assert in formatedAsserts">
+                {{ "Assertion" + assert }}
+              </p>
             </ul>
           </div>
         </v-card-text>
+        <h2 class="text-button-refactor">
+          Após finalizar o passo a passo, confirme aqui se você acertou!
+        </h2>
+        <v-row class="foot-buttons" justify="space-around">
+          <ButtonPopup
+            text="Refatorar"
+            :disable="refactorState"
+            :onclick="handleRefactor"
+            :refactor="feedback"
+          />
+        </v-row>
       </v-col>
-    </v-row>
-    <v-row class="foot-buttons" justify="space-around">
-      <ButtonPopup text="Refatorar" :disable="refactorState" :onclick="handleRefactor" :refactor="feedback"/>
     </v-row>
   </v-container>
 </template>
@@ -42,10 +55,9 @@
 import BackButton from "@/components/BackButton.vue";
 import { ref } from "vue";
 import { Codemirror } from "vue-codemirror";
-import ButtonPopup from "../components/ButtonPopup.vue"
+import ButtonPopup from "../components/ButtonPopup.vue";
 import { getExercisesbyTheirId } from "@/services/ExerciseService";
 import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
-
 
 const router = useRouter();
 const route = useRoute();
@@ -62,47 +74,49 @@ const formatedSteps = ref<string[]>([]);
 const formatedAsserts = ref<string[]>([]);
 
 function handleRefactor() {
-  if(checkRefactor()){
+  if (checkRefactor()) {
     feedback.value = true;
-  } else{
+  } else {
     feedback.value = false;
   }
 }
 
 function checkRefactor() {
   const regex = /\s/g;
-  return refactoredExercise.value?.replace(regex, '') === userExercise.value?.replace(regex, '');
+  return (
+    refactoredExercise.value?.replace(regex, "") ===
+    userExercise.value?.replace(regex, "")
+  );
 }
 
 function handleChange(value: string) {
   refactorState.value = false;
-  userExercise.value = value
+  userExercise.value = value;
 }
 
-function formatAssertString(text:  string | undefined){
-  if( text === undefined) return
+function formatAssertString(text: string | undefined) {
+  if (text === undefined) return;
   let subArrays = text.split("Assertion");
   subArrays.shift();
   formatedAsserts.value = subArrays;
 }
 
-function formatStepString(text:  string | undefined){
-  if(text === undefined){
-    return
+function formatStepString(text: string | undefined) {
+  if (text === undefined) {
+    return;
   }
   let subArrays;
-  if(text.indexOf("Assertion") === -1){
+  if (text.indexOf("Assertion") === -1) {
     subArrays = text.split("Passo");
-    subArrays.shift()
+    subArrays.shift();
     formatedSteps.value = subArrays;
   } else {
-    let newText: string = text.substring(0, text.indexOf("Assertion"))
+    let newText: string = text.substring(0, text.indexOf("Assertion"));
     subArrays = newText.split("Passo");
     subArrays.shift();
     formatedSteps.value = subArrays;
   }
 }
-
 
 async function fetchExercise(id: number) {
   const result = await getExercisesbyTheirId(id);
@@ -126,7 +140,6 @@ onBeforeRouteUpdate(async (to, from) => {
 </script>
 
 <style scoped>
-
 .card-step {
   background-color: #d9f3ed;
   border-radius: 10px;
@@ -142,7 +155,13 @@ onBeforeRouteUpdate(async (to, from) => {
 }
 .foot-buttons {
   margin-top: 0rem;
-  margin-bottom: 2rem
+  margin-bottom: 2rem;
+}
+
+.text-button-refactor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
