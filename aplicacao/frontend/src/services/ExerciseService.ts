@@ -2,7 +2,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://tutor-de-ensino-ts.onrender.com',
+    baseURL: 'https://tutor-de-ensino-ts.onrender.com',
     timeout: 10000,
 });
 
