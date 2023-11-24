@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <v-col>
-      <nav-bar/> 
+      <nav-bar />
       <v-main>
-        <router-view /> 
+        <router-view />
       </v-main>
     </v-col>
   </v-app>
@@ -26,7 +26,7 @@ export default defineComponent({
 </script>
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
