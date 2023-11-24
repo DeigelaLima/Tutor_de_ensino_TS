@@ -7,7 +7,7 @@ public void testUTF8RoundTrip() throws Exception {
      final BCodec bcodec = new BCodec(CharEncoding.UTF_8);
 
      assertEquals("=?UTF-8?B?0JLRgdC10Lxf0L/RgNC40LLQtdGC?=", bcodec.encode(ru_msg), "Codificação de ru_msg esperada.");
-     assertEquals("=?UTF-8?B?R3LDvGV6aV96w6Rtw6Q=?=", bcodec.encode(ch_msg), "Codificação de 'ch_msg' esperada.");
+     assertEquals("=?UTF-8?B?R3LDvGV6aV96w6Rtw6Q=?=", bcodec.encode(ch_msg), "Codificação de ch_msg esperada.");
 
      assertEquals(ru_msg, bcodec.decode(bcodec.encode(ru_msg)), "Decodificação de ru_msg igual à original.");
      assertEquals(ch_msg, bcodec.decode(bcodec.encode(ch_msg)), "Decodificação de ch_msg igual à original.");

@@ -7,6 +7,6 @@ public void testDefaultEncoding() throws Exception {
        final String encoded1 = urlCodec.encode(plain, "UnicodeBig");
        final String encoded2 = urlCodec.encode(plain);
        
-       assertEquals(encoded1, encoded2, "As codificações devem ser iguais");
+       assertEquals(encoded1, encoded2, "As codificações devem ser iguais.");
        this.validateState(urlCodec);
 }
