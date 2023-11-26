@@ -2,8 +2,12 @@
 import axios, { AxiosResponse } from 'axios';
 
 const instance = axios.create({
+<<<<<<< HEAD
     // baseURL:'https://tutor-de-ensino-ts.onrender.com',
     baseURL: 'http://localhost:3000',
+=======
+    baseURL: 'https://tutor-de-ensino-ts.onrender.com',
+>>>>>>> 53acaca93fd04864d34ae0ab6a3ecf0a81c84de2
     timeout: 10000,
 });
 
