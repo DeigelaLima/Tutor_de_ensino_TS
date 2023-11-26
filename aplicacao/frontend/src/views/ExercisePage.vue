@@ -2,10 +2,10 @@
   <v-container fluid class="container">
     <v-row>
       <v-row class="back-button">
-        <BackButton :onclick="() => router.push('/')" />
+        <BackButton :onclick="() => router.push(`/chooseexercise/${idSmell}`)" />
       </v-row>
       <v-row class="header">
-        <h1>{{ title }}</h1>
+        <h1 class="title">{{ title }}</h1>
         <p class="description">{{ description }}</p>
       </v-row>
       <v-col>
@@ -19,7 +19,7 @@
         <v-card-text align="center">
           <h2 class="intro-step">
             Para iniciar a refatoração do teste de unidade que contém o
-            'smell',<br />você deve seguir os seguintes passos:
+            'smell', você deve seguir os seguintes passos:
           </h2>
           <div class="card-step">
             <h1 class="steps-title">Passo a passo</h1>
@@ -29,7 +29,7 @@
               </p>
             </ul>
             <ul class="step-by-step">
-              <p class="step" :key="assert" v-for="assert in formatedAsserts">
+              <p class="step-assert" :key="assert" v-for="assert in formatedAsserts">
                 {{ "Assertion" + assert }}
               </p>
             </ul>
@@ -62,6 +62,7 @@ import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 let id = Number(route.params.idSmell);
+let idSmell = Number(route.params.id);
 let exerciseChoose = ref<string>();
 const refactorState = ref(true);
 const refactoredExercise = ref<string>();
@@ -144,8 +145,13 @@ onBeforeRouteUpdate(async (to, from) => {
   background-color: #d9f3ed;
   border-radius: 10px;
   padding-bottom: 2rem;
+  min-height: 100px;
 }
 
+.step-assert {
+  padding-bottom: 1rem;
+  padding-left: 3rem;
+}
 .step {
   padding-bottom: 1rem;
 }
@@ -183,6 +189,8 @@ onBeforeRouteUpdate(async (to, from) => {
   border-radius: 10px;
   background-color: #d9f3ed;
   font-size: 20px;
+  min-width: 95vw;
+  min-height: 150px;
 }
 
 .step-by-step {
