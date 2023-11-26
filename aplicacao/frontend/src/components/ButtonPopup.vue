@@ -20,7 +20,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn text="Próximo" @click="() => router.push(`/chooseexercise/${idSmell}`)"></v-btn>
+          <v-btn text="Próximo" @click="() => router.push('/')"></v-btn>
         </v-card-actions>
       </v-card>
     </template>
@@ -41,12 +41,9 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
-const route = useRoute();
-
-let idSmell = Number(route.params.id)
 
 defineProps<{
   text: string;
