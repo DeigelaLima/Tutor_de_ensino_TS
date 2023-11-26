@@ -21,23 +21,40 @@
           práticas de refatoração.
         </v-row>
       </div>
+      
       <div class="requisites-section">
         <h1 class="h1-text">Requisitos do sistema</h1>
         <div class="about-tutor">
           Para utilizar a ferramenta Tutor de Ensino você deve ter instalado o
           navegador Chrome ou Firefox em seu computador e em seguida clicar no
           link para ter acesso ao Tutor de Ensino:
-          <a href="  https://tutor-de-ensino-ts.vercel.app/">
+          <a href="  https://tutor-de-ensino-ts.vercel.app/" target="_blank">
             https://tutor-de-ensino-ts.vercel.app/
           </a>
         </div>
       </div>
+
+      <div class="test-smells-available">
+        <h1 class="h1-text">Datasets disponíveis</h1>
+        <div class="about-tutor">
+            Os Datasets do Tutor de Ensino estão disponíveis nos seguintes repositórios:
+            <div class="links">
+              <ul class="links">
+                <li><a href="https://github.com/apache/commons-codec" target="_blank">
+                  https://github.com/apache/commons-codec</a></li>
+                <li><a href="https://github.com/apache/commons-math.git" target="_blank">
+                  https://github.com/apache/commons-math.git</a></li>
+             </ul>
+            </div>
+        </div>
+      </div>
+
       <div class="development-team-div">
         <h1 class="h1-text">Equipe de Desenvolvimento</h1>
         <div class="development-team">
           <DeveloperCard
             nick="DeigelaLima"
-            foto="@/assets/team/16566520.jpeg"
+            :foto="require('@/assets/team/Foto-Deigela.jpeg')"
             descricao="Graduanda em Ciência da Computação, bolsista PIBIC e desenvolvedora front-end.
 
 "
@@ -46,7 +63,7 @@
           ></DeveloperCard>
           <DeveloperCard
             nick="Joaopfq"
-            foto="86858044.jpeg"
+            :foto="require('@/assets/team/Foto-Joao.jpeg')"
             descricao="Graduando em Engenharia de Software, bolsista PIBITI e desenvolvedor front-end.
 
 
@@ -56,7 +73,7 @@
           ></DeveloperCard>
           <DeveloperCard
             nick="larasouzabr"
-            foto="80922589.jpeg"
+            :foto="require('@/assets/team/Foto-Lara.jpeg')"
             descricao="Graduanda em Engenharia de Software, bolsista PIBIC e desenvolvedora front-end.
 "
             nome="Lara Souza"
@@ -64,7 +81,7 @@
           ></DeveloperCard>
           <DeveloperCard
             nick="ovictorpa"
-            foto="84782737.jpeg"
+            :foto="require('@/assets/team/Foto-Victor.png')"
             descricao="Graduando em Engenharia de Software, bolsista PIBITI e desenvolvedor back-end.
 
 
@@ -74,7 +91,7 @@
             email="victorpa@alu.ufc.br"
           ></DeveloperCard>
           <DeveloperCard
-            foto="Foto-Carla-240x265.jpg"
+            :foto="require('@/assets/team/Foto-Carla.jpg')"
             descricao="Orientadora, professora na Universidade Federal do Ceará - Campus Quixadá."
             nome="Carla Bezerra"
             email="carlailane@ufc.br"
@@ -99,6 +116,7 @@ import DeveloperCard from "@/components/DeveloperCard.vue";
 
 .description,
 .requisites-section,
+.test-smells-available,
 .development-team-div {
   margin-top: 3vh;
   display: flex;
@@ -116,5 +134,10 @@ import DeveloperCard from "@/components/DeveloperCard.vue";
 
 .container {
   margin-top: 5vh;
+}
+
+.links {
+  text-align: left;
+  margin-left: 40px;
 }
 </style>

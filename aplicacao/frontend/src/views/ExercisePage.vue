@@ -2,10 +2,10 @@
   <v-container fluid class="container">
     <v-row>
       <v-row class="back-button">
-        <BackButton :onclick="() => router.push(`/chooseexercise/${idSmell}`)" />
+        <BackButton :onclick="() => router.push('/')" />
       </v-row>
       <v-row class="header">
-        <h1 class="title">{{ title }}</h1>
+        <h1>{{ title }}</h1>
         <p class="description">{{ description }}</p>
       </v-row>
       <v-col>
@@ -29,7 +29,7 @@
               </p>
             </ul>
             <ul class="step-by-step">
-              <p class="step-assert" :key="assert" v-for="assert in formatedAsserts">
+              <p class="step" :key="assert" v-for="assert in formatedAsserts">
                 {{ "Assertion" + assert }}
               </p>
             </ul>
@@ -62,7 +62,6 @@ import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 let id = Number(route.params.idSmell);
-let idSmell = Number(route.params.id);
 let exerciseChoose = ref<string>();
 const refactorState = ref(true);
 const refactoredExercise = ref<string>();
@@ -145,20 +144,10 @@ onBeforeRouteUpdate(async (to, from) => {
   background-color: #d9f3ed;
   border-radius: 10px;
   padding-bottom: 2rem;
-  min-height: 200px;
-}
-
-.title {
-  min-width: 50px;
 }
 
 .step {
   padding-bottom: 1rem;
-}
-
-.step-assert{
-  padding-bottom: 0.5rem;
-  padding-left: 3rem;
 }
 .intro-step {
   text-align: justify;
@@ -186,7 +175,6 @@ onBeforeRouteUpdate(async (to, from) => {
   justify-content: start;
   align-items: center;
   padding: 2em 0em 0em 3em;
-  min-height: 30px;
 }
 
 .description {
@@ -195,8 +183,6 @@ onBeforeRouteUpdate(async (to, from) => {
   border-radius: 10px;
   background-color: #d9f3ed;
   font-size: 20px;
-  min-width: 95vw;
-  min-height: 200px;
 }
 
 .step-by-step {
