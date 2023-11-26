@@ -21,17 +21,34 @@
           práticas de refatoração.
         </v-row>
       </div>
+      
       <div class="requisites-section">
         <h1 class="h1-text">Requisitos do sistema</h1>
         <div class="about-tutor">
           Para utilizar a ferramenta Tutor de Ensino você deve ter instalado o
           navegador Chrome ou Firefox em seu computador e em seguida clicar no
           link para ter acesso ao Tutor de Ensino:
-          <a href="  https://tutor-de-ensino-ts.vercel.app/">
+          <a href="  https://tutor-de-ensino-ts.vercel.app/" target="_blank">
             https://tutor-de-ensino-ts.vercel.app/
           </a>
         </div>
       </div>
+
+      <div class="test-smells-available">
+        <h1 class="h1-text">Datasets disponíveis</h1>
+        <div class="about-tutor">
+            Os Datasets do Tutor de Ensino estão disponíveis nos seguintes repositórios:
+            <div class="links">
+              <ul class="links">
+                <li><a href="https://github.com/apache/commons-codec" target="_blank">
+                  https://github.com/apache/commons-codec</a></li>
+                <li><a href="https://github.com/apache/commons-math.git" target="_blank">
+                  https://github.com/apache/commons-math.git</a></li>
+             </ul>
+            </div>
+        </div>
+      </div>
+
       <div class="development-team-div">
         <h1 class="h1-text">Equipe de Desenvolvimento</h1>
         <div class="development-team">
@@ -99,6 +116,7 @@ import DeveloperCard from "@/components/DeveloperCard.vue";
 
 .description,
 .requisites-section,
+.test-smells-available,
 .development-team-div {
   margin-top: 3vh;
   display: flex;
@@ -116,5 +134,10 @@ import DeveloperCard from "@/components/DeveloperCard.vue";
 
 .container {
   margin-top: 5vh;
+}
+
+.links {
+  text-align: left;
+  margin-left: 40px;
 }
 </style>
