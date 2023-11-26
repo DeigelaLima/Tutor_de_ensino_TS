@@ -2,7 +2,7 @@
   <v-container fluid class="container">
     <v-row>
       <v-row class="back-button">
-        <BackButton :onclick="() => router.push('/')" />
+        <BackButton :onclick="() => router.push(`/chooseexercise/${idSmell}`)" />
       </v-row>
       <v-row class="header">
         <h1>{{ title }}</h1>
@@ -62,6 +62,7 @@ import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 let id = Number(route.params.idSmell);
+let idSmell = Number(route.params.id);
 let exerciseChoose = ref<string>();
 const refactorState = ref(true);
 const refactoredExercise = ref<string>();
