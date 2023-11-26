@@ -54,7 +54,7 @@
         <div class="development-team">
           <DeveloperCard
             nick="DeigelaLima"
-            foto="@/assets/team/16566520.jpeg"
+            :foto="require('@/assets/team/Foto-Deigela.jpeg')"
             descricao="Graduanda em Ciência da Computação, bolsista PIBIC e desenvolvedora front-end.
 
 "
@@ -63,7 +63,7 @@
           ></DeveloperCard>
           <DeveloperCard
             nick="Joaopfq"
-            foto="86858044.jpeg"
+            :foto="require('@/assets/team/Foto-Joao.jpeg')"
             descricao="Graduando em Engenharia de Software, bolsista PIBITI e desenvolvedor front-end.
 
 
@@ -73,7 +73,7 @@
           ></DeveloperCard>
           <DeveloperCard
             nick="larasouzabr"
-            foto="80922589.jpeg"
+            :foto="require('@/assets/team/Foto-Lara.jpeg')"
             descricao="Graduanda em Engenharia de Software, bolsista PIBIC e desenvolvedora front-end.
 "
             nome="Lara Souza"
@@ -81,7 +81,7 @@
           ></DeveloperCard>
           <DeveloperCard
             nick="ovictorpa"
-            foto="84782737.jpeg"
+            :foto="require('@/assets/team/Foto-Victor.png')"
             descricao="Graduando em Engenharia de Software, bolsista PIBITI e desenvolvedor back-end.
 
 
@@ -91,7 +91,7 @@
             email="victorpa@alu.ufc.br"
           ></DeveloperCard>
           <DeveloperCard
-            foto="Foto-Carla-240x265.jpg"
+            :foto="require('@/assets/team/Foto-Carla.jpg')"
             descricao="Orientadora, professora na Universidade Federal do Ceará - Campus Quixadá."
             nome="Carla Bezerra"
             email="carlailane@ufc.br"
