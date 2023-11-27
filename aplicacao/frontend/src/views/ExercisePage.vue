@@ -19,7 +19,7 @@
         <v-card-text align="center">
           <h2 class="intro-step">
             Para iniciar a refatoração do teste de unidade que contém o
-            'smell', você deve seguir os seguintes passos:
+            "test smell", você deve seguir os seguintes passos:
           </h2>
           <div class="card-step">
             <h1 class="steps-title">Passo a passo</h1>
