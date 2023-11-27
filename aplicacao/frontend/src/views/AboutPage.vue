@@ -37,7 +37,7 @@
       <div class="test-smells-available">
         <h1 class="h1-text">Datasets disponíveis</h1>
         <div class="about-tutor">
-            Os Datasets do Tutor de Ensino estão disponíveis nos seguintes repositórios:
+            Os Datasets que o Tutor de Ensino está utilizando estão disponíveis nos seguintes repositórios:
             <div class="links">
               <ul class="links">
                 <li><a href="https://github.com/apache/commons-codec" target="_blank">
