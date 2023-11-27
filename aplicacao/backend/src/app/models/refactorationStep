@@ -46,8 +46,9 @@ const refactorationStep = {
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
                 "final byte[] b = StringUtils.getBytesUtf8(\"Hello World\"); "+
                 "final String expected = \"48656c6c6f20576f726c64\"; "+
-                "char[] actual;"+
-                "actual = Hex.encodeHex(b, true);",
+                "char[] actual; "+
+                "actual = Hex.encodeHex(b, true); "+
+        "Passo 4: Após de mover a assertion que estava repetida e atribuição da variável actual, ambas devem ser excluídas do teste testEncodeHexByteArrayHelloWorldLowerCaseHex.",
 
     refSmell8: // pap-da-2
         "Para iniciar a refatoração do teste de unidade testEncodeDecodeBlanks, que contém o 'smell', você deve seguir o seguinte passo: "+
