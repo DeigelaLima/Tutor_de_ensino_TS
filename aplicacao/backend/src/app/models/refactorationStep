@@ -98,7 +98,7 @@ const refactorationStep = {
 }
 
 for (const key in refactorationStep) {
-    refactorationStep[key] = refactorationStep[key].replace(/\n/g, ' ');
+    refactorationStep[key] = refactorationStep[key].replace(/\n/g, /\n/g);
 }
 
 module.exports = refactorationStep
