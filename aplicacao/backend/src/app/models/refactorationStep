@@ -44,8 +44,8 @@ const refactorationStep = {
         "Passo 1: Crie um segundo teste com o nome do método testEncodeHexByteArrayHelloWorldLowerCaseHexExtracted(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testEncodeHexByteArrayHelloWorldLowerCaseHex' e mova-a para o novo método criado; "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
-                "final byte[] b = StringUtils.getBytesUtf8('Hello World'); "+
-                "har[] actual; "+ 
+                "final byte[] b = StringUtils.getBytesUtf8('Hello World');\n"+
+                "char[] actual;\n"+ 
                 "final String expected = '48656c6c6f20576f726c64';",
 
     refSmell8: // pap-da-2
@@ -53,11 +53,11 @@ const refactorationStep = {
         "Passo 1 - Crie um segundo teste com o nome do método testEncodeDecodeBlanksExtracted(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testEncodeDecodeBlanks' mova-a para o novo método criado. "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
-                "final String plain = 'Mind those pesky blanks'; "+
-                "final String encoded2 = '=?UTF-8?Q?Mind_those_pesky_blanks?='; "+
-                "final QCodec qcodec = new QCodec(); "+
-                "qcodec.setEncodeBlanks(false); "+
-                "String s = qcodec.encode(plain); "+
+                "final String plain = 'Mind those pesky blanks';\n"+
+                "final String encoded2 = '=?UTF-8?Q?Mind_those_pesky_blanks?=';\n"+
+                "final QCodec qcodec = new QCodec();\n"+
+                "qcodec.setEncodeBlanks(false);\n"+
+                "String s = qcodec.encode(plain);\n"+
                 "s = qcodec.decode(encoded2);",
 
     refSmell9: // pap-da-3
@@ -65,11 +65,11 @@ const refactorationStep = {
         "Passo 1: Crie um segundo teste com o nome do método testDecodeObjectsExtracted(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testDecodeObjects' e mova-a para o novo método criado. "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
-            "final QuotedPrintableCodec qpcodec = new QuotedPrintableCodec(); "+
-            "final String plain = '1+1 =3D 2'; "+
-            "String decoded = (String) qpcodec.decode((Object) plain); "+
-            "final byte[] plainBA = plain.getBytes(StandardCharsets.UTF_8); "+
-            "final byte[] decodedBA = (byte[]) qpcodec.decode((Object) plainBA); "+
+            "final QuotedPrintableCodec qpcodec = new QuotedPrintableCodec();\n"+
+            "final String plain = '1+1 =3D 2';\n"+
+            "String decoded = (String) qpcodec.decode((Object) plain);\n"+
+            "final byte[] plainBA = plain.getBytes(StandardCharsets.UTF_8);\n"+
+            "final byte[] decodedBA = (byte[]) qpcodec.decode((Object) plainBA);\n"+
             "decoded = new String(decodedBA);",
             
     // Assertion Roulette: pap-ar-1
