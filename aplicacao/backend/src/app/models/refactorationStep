@@ -58,7 +58,7 @@ const refactorationStep = {
 
     refSmell9: // pap-da-3
         "Passo 1: Crie um segundo teste com o nome do método testDecodeObjectsExtracted(), do tipo void e inclua o throws Exception no método. Lembre-se de utilizar a notação @Test; "+
-        "Passo 2: Separe a assertion que está sendo repetida no teste 'testDecodeObjects' e mova-a para o novo método criado. "+
+        "Passo 2: Separe a assertion que está sendo repetida no teste testDecodeObjects e mova-a para o novo método criado. "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
             "final QuotedPrintableCodec qpcodec = new QuotedPrintableCodec(); "+
             "final String plain = \"1+1 =3D 2\"; "+
