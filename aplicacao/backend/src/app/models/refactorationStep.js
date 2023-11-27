@@ -40,7 +40,7 @@ const refactorationStep = {
                 "final byte[] b = StringUtils.getBytesUtf8(\"Hello World\"); "+
                 "final String expected = \"48656c6c6f20576f726c64\"; "+
                 "char[] actual; ",
-               // "actual = Hex.encodeHex(b, true); ",
+                //"actual = Hex.encodeHex(b, true); ",
     refSmell8: // pap-da-2
         "Passo 1: Crie um segundo teste com o nome do método testEncodeDecodeBlanksExtracted(), do tipo void e inclua o throws Exception no método. Lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a atribuição (linha 16) e a assertion que está sendo repetida (linha 17) no teste testEncodeDecodeBlanks e mova-as para o novo método criado (Não mude os nomes das variáveis e após mover exclua essas linhas do método anterior)."+
