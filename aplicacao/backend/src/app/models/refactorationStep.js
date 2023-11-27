@@ -3,31 +3,31 @@ const refactorationStep = {
     //Ignored Test: pap-it-1
     refSmell1:
         "Passo 1: Localize a anotação @Ignore no teste testSampling. "+
-        "Passo 2: Exclua a anotação para eliminar o smell.",
+        "Passo 2: Exclua a anotação para eliminar o test smell.",
     
     refSmell2: //pap-it-2
         "Passo 1: Localize a anotação @Ignore no teste testRandomUnsymmetricMatrix. "+
-        "Passo 2: Exclua a anotação para eliminar o smell.", 
+        "Passo 2: Exclua a anotação para eliminar o test smell.", 
     
     refSmell3: //pap-it-3
         "Passo 1: Localize a anotação @Ignore no teste ttestNormalDistributionUnsymmetricMatrix. "+
-        "Passo 2: Exclua a anotação para eliminar o smell.", 
+        "Passo 2: Exclua a anotação para eliminar o test smell.", 
 
     //Eager Test: //pap-et-1
     refSmell4:
-        "Passo 1: Crie um segundo teste com o nome do método testConstructor_getCause(), lembre-se de utilizar a notação @Test; "+
+        "Passo 1: Crie um segundo teste com o nome do método testConstructor_getCause(), do tipo void. Lembre-se de utilizar a notação @Test; "+
         "Passo 2: Mova a assertion assertNull(e.getCause()) para o novo método de teste. "+
         "Passo 3: Antes da assertion que foi movida para o novo método, inclua o objeto que está sendo instanciado e que faz parte da assertion, da seguinte forma: "+
                 "final EncoderException e = new EncoderException();",
 
     refSmell5: //pap-et-2
-        "Passo 1: Crie um segundo teste com o nome do método  testConstructorString_getCause(), lembre-se de utilizar a notação @Test; "+
+        "Passo 1: Crie um segundo teste com o nome do método  testConstructorString_getCause(), do tipo void. Lembre-se de utilizar a notação @Test; "+
         "Passo 2: Mova a assertion assertNull(e.getCause()) para o novo método de teste. "+
         "Passo 3: Antes da assertion que foi movida para o novo método, inclua o objeto que está sendo instanciado e que faz parte da assertion, da seguinte forma: "+
                 "final EncoderException e = new EncoderException(MSG);",
 
     refSmell6: //pap-et-3
-        "Passo 1: Crie um segundo teste com o nome do método  testConstructorThrowable_getCause(), lembre-se de utilizar a notação @Test; "+
+        "Passo 1: Crie um segundo teste com o nome do método  testConstructorThrowable_getCause(), do tipo void. Lembre-se de utilizar a notação @Test; "+
         "Passo 2: Mova a assertion assertEquals(t, e.getCause()); para o novo método de teste. "+
         "Passo 3: Antes da assertion que foi movida para o novo método, inclua o objeto que está sendo instanciado e que faz parte da assertion, da seguinte forma: "+
             "final EncoderException e = new EncoderException(t);",

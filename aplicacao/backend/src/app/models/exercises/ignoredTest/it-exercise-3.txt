@@ -1,5 +1,5 @@
-@Test
 @Ignore
+@Test
 public void testNormalDistributionUnsymmetricMatrix() {
      for (int run = 0; run < 100; run++) {
           Random r = new Random(System.currentTimeMillis());
