@@ -2,37 +2,31 @@ const refactorationStep = {
 
     //Ignored Test: pap-it-1
     refSmell1:
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Localize a anotação @Ignore no teste testSampling. "+
         "Passo 2: Exclua a anotação para eliminar o smell.",
     
     refSmell2: //pap-it-2
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Localize a anotação @Ignore no teste testRandomUnsymmetricMatrix. "+
         "Passo 2: Exclua a anotação para eliminar o smell.", 
     
     refSmell3: //pap-it-3
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Localize a anotação @Ignore no teste ttestNormalDistributionUnsymmetricMatrix. "+
         "Passo 2: Exclua a anotação para eliminar o smell.", 
 
     //Eager Test: //pap-et-1
     refSmell4:
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Crie um segundo teste com o nome do método testConstructor_getCause(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Mova a assertion assertNull(e.getCause()) para o novo método de teste. "+
         "Passo 3: Antes da assertion que foi movida para o novo método, inclua o objeto que está sendo instanciado e que faz parte da assertion, da seguinte forma: "+
                 "final EncoderException e = new EncoderException();",
 
     refSmell5: //pap-et-2
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Crie um segundo teste com o nome do método  testConstructorString_getCause(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Mova a assertion assertNull(e.getCause()) para o novo método de teste. "+
         "Passo 3: Antes da assertion que foi movida para o novo método, inclua o objeto que está sendo instanciado e que faz parte da assertion, da seguinte forma: "+
                 "final EncoderException e = new EncoderException(MSG);",
 
     refSmell6: //pap-et-3
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Crie um segundo teste com o nome do método  testConstructorThrowable_getCause(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Mova a assertion assertEquals(t, e.getCause()); para o novo método de teste. "+
         "Passo 3: Antes da assertion que foi movida para o novo método, inclua o objeto que está sendo instanciado e que faz parte da assertion, da seguinte forma: "+
@@ -40,18 +34,16 @@ const refactorationStep = {
 
     // Duplicate Assert: // pap-da-1
     refSmell7:
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
-        "Passo 1: Crie um segundo teste com o nome do método testEncodeHexByteArrayHelloWorldLowerCaseHexExtracted(), lembre-se de utilizar a notação @Test; "+
+        "Passo 1: Crie um segundo teste com o nome do método testEncodeHexByteArrayHelloWorldLowerCaseHexExtracted(), de tipo void. Lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste testEncodeHexByteArrayHelloWorldLowerCaseHex e mova-a para o novo método criado; "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
                 "final byte[] b = StringUtils.getBytesUtf8(\"Hello World\"); "+
                 "final String expected = \"48656c6c6f20576f726c64\"; "+
                 "char[] actual; "+
                 "actual = Hex.encodeHex(b, true); "+
-        "Passo 4: Após de mover a assertion que estava repetida e atribuição da variável actual, ambas devem ser excluídas do teste testEncodeHexByteArrayHelloWorldLowerCaseHex.",
+        "Passo 4: Após mover a assertion que estava repetida e atribuição da variável actual, ambas devem ser excluídas do teste testEncodeHexByteArrayHelloWorldLowerCaseHex.",
 
     refSmell8: // pap-da-2
-        "Para iniciar a refatoração do teste de unidade testEncodeDecodeBlanks, que contém o 'smell', você deve seguir o seguinte passo: "+
         "Passo 1 - Crie um segundo teste com o nome do método testEncodeDecodeBlanksExtracted(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testEncodeDecodeBlanks' mova-a para o novo método criado. "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
@@ -63,7 +55,6 @@ const refactorationStep = {
                 "s = qcodec.decode(encoded2);",
 
     refSmell9: // pap-da-3
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Crie um segundo teste com o nome do método testDecodeObjectsExtracted(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testDecodeObjects' e mova-a para o novo método criado. "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
@@ -76,22 +67,19 @@ const refactorationStep = {
             
     // Assertion Roulette: pap-ar-1
     refSmell10:
-        "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: " +
-            "Passo 1:  Localize no teste as assertions que necessitam de mensagens explicativas. "+
-            "Passo 2: Seguindo a ordem em que as assertions aparecem no teste, é necessário inserir no terceiro parâmetro de cada assertion as frases a seguir:" +
-                "Assertion 1: \"Codificação de ru_msg esperada.\" " +
-                "Assertion 2: \"Codificação de ch_msg esperada.\" "+
-                "Assertion 3: \"Decodificação de ru_msg igual à original.\" "+
-                "Assertion 4: \"Decodificação de ch_msg igual à original.\"",
+        "Passo 1:  Localize no teste as assertions que necessitam de mensagens explicativas. "+
+        "Passo 2: Seguindo a ordem em que as assertions aparecem no teste, é necessário inserir no terceiro parâmetro de cada assertion as frases a seguir:" +
+            "Assertion 1: \"Codificação de ru_msg esperada.\" " +
+            "Assertion 2: \"Codificação de ch_msg esperada.\" "+
+            "Assertion 3: \"Decodificação de ru_msg igual à original.\" "+
+            "Assertion 4: \"Decodificação de ch_msg igual à original.\"",
 
     refSmell11: // pap-ar-2
-        "Para iniciar a refatoração do teste de unidade testDefaultEncoding, que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1 : Localize no teste a assertion que necessita de mensagem explicativas. "+
         "Passo 2 - Seguindo a ordem em que a assertion aparece no teste, é necessário inserir no terceiro parâmetro da assertion a frase a seguir: "+
                 "Assertion 1: \"As codificações devem ser iguais.\"",
 
     refSmell12: // pap-ar-3
-        "Para iniciar a refatoração do teste de unidade testDecodeInvalidContent, que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Localize no teste as assertions que necessitam de mensagens explicativas. "+
         "Passo 2: Seguindo a ordem em que as assertions aparecem no teste, é necessário inserir no terceiro parâmetro de cada assertion as frases a seguir: "+
             "Assertion 1: \"Tamanho do array resultante deve ser igual ao array original.\" "+
