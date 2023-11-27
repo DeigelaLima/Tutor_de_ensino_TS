@@ -45,8 +45,8 @@ const refactorationStep = {
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testEncodeHexByteArrayHelloWorldLowerCaseHex' e mova-a para o novo método criado; "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
                 "final byte[] b = StringUtils.getBytesUtf8(\"Hello World\");\n"+
-                "char[] actual;\n"+ 
-                "final String expected = \"48656c6c6f20576f726c64\";",
+                "final String expected = \"48656c6c6f20576f726c64\"; \n"+
+                "char[] actual;", 
 
     refSmell8: // pap-da-2
         "Para iniciar a refatoração do teste de unidade testEncodeDecodeBlanks, que contém o 'smell', você deve seguir o seguinte passo: "+
@@ -98,7 +98,7 @@ const refactorationStep = {
 }
 
 for (const key in refactorationStep) {
-    refactorationStep[key] = refactorationStep[key].replace(/\n/g, '/\n/g');
+    refactorationStep[key] = refactorationStep[key].replace(/\\n/g, '\n');
 }
 
 module.exports = refactorationStep
