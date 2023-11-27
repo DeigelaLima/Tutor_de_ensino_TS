@@ -2,7 +2,9 @@
   <v-container fluid class="container">
     <v-row>
       <v-row class="back-button">
-        <BackButton :onclick="() => router.push(`/chooseexercise/${idSmell}`)" />
+        <BackButton
+          :onclick="() => router.push(`/chooseexercise/${idSmell}`)"
+        />
       </v-row>
       <v-row class="header">
         <h1 class="title">{{ title }}</h1>
@@ -18,18 +20,26 @@
       <v-col>
         <v-card-text align="center">
           <h2 class="intro-step">
-            Para iniciar a refatoração do teste de unidade que contém o
-            "test smell", você deve seguir os seguintes passos:
+            Para iniciar a refatoração do teste de unidade que contém o "test
+            smell", você deve seguir os seguintes passos:
           </h2>
           <div class="card-step">
             <h1 class="steps-title">Passo a passo</h1>
             <ul class="step-by-step">
-              <p class="step" :key="step" v-for="step in formatedSteps">
-                {{ "Passo" + step }}
+              <p
+                :key="step"
+                :class="checkIfNeedsPasso(step) ? 'step' : ''"
+                v-for="step in formatedSteps"
+              >
+                {{ checkIfNeedsPasso(step) + step }}
               </p>
             </ul>
             <ul class="step-by-step">
-              <p class="step-assert" :key="assert" v-for="assert in formatedAsserts">
+              <p
+                class="step-assert"
+                :key="assert"
+                v-for="assert in formatedAsserts"
+              >
                 {{ "Assertion" + assert }}
               </p>
             </ul>
@@ -110,13 +120,21 @@ function formatStepString(text: string | undefined) {
   if (text.indexOf("Assertion") === -1) {
     subArrays = text.split("Passo");
     subArrays.shift();
-    formatedSteps.value = subArrays;
+    formatedSteps.value = subArrays.map((step) => step.split("\n")).flat();
   } else {
     let newText: string = text.substring(0, text.indexOf("Assertion"));
     subArrays = newText.split("Passo");
     subArrays.shift();
-    formatedSteps.value = subArrays;
+    formatedSteps.value = subArrays.map((step) => step.split("\n")).flat();
   }
+}
+
+function checkIfNeedsPasso(passo: string) {
+  const palavras = passo.split("");
+  if (palavras.length > 0 && /^\d+$/.test(palavras[1])) {
+    return "Passo";
+  }
+  return "";
 }
 
 async function fetchExercise(id: number) {
@@ -154,6 +172,7 @@ onBeforeRouteUpdate(async (to, from) => {
 }
 .step {
   padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 .intro-step {
   text-align: justify;

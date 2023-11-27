@@ -3,7 +3,6 @@ import axios, { AxiosResponse } from 'axios';
 
 const instance = axios.create({
     baseURL: 'https://tutor-de-ensino-ts.onrender.com',
-    //baseURL: 'http://localhost:3000',
 });
 
 export async function getExercisesbyTheirId(id: number) {
