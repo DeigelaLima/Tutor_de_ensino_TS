@@ -35,38 +35,33 @@ const refactorationStep = {
     // Duplicate Assert: // pap-da-1
     refSmell7:
         "Passo 1: Crie um segundo teste com o nome do método testEncodeHexByteArrayHelloWorldLowerCaseHexExtracted(), do tipo void. Lembre-se de utilizar a notação @Test; "+
-        "Passo 2: Separe a assertion que está sendo repetida no teste testEncodeHexByteArrayHelloWorldLowerCaseHex e mova-a para o novo método criado; "+
-        "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
+        "Passo 2: Separe a atribuição (linha 9) e a assertion que está sendo repetida (linha 10) no teste testEncodeHexByteArrayHelloWorldLowerCaseHex e mova ambas para o novo método de teste criado (Não mude os nomes das variáveis e após mover exclua essas linhas do método anterior);"+
+        "Passo 3: Antes da atribuição e da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: \n"+
                 "final byte[] b = StringUtils.getBytesUtf8(\"Hello World\"); "+
                 "final String expected = \"48656c6c6f20576f726c64\"; "+
                 "char[] actual; "+
-                "actual = Hex.encodeHex(b, true); "+
-        "Passo 4: Após mover a assertion que estava repetida e atribuição da variável actual, ambas devem ser excluídas do teste testEncodeHexByteArrayHelloWorldLowerCaseHex.",
-
+                "actual = Hex.encodeHex(b, true); ",
     refSmell8: // pap-da-2
         "Passo 1: Crie um segundo teste com o nome do método testEncodeDecodeBlanksExtracted(), do tipo void e inclua o throws Exception no método. Lembre-se de utilizar a notação @Test; "+
-        "Passo 2: Separe a assertion que está sendo repetida no teste testEncodeDecodeBlanks e mova-a para o novo método criado. "+
-        "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
+        "Passo 2: Separe a atribuição (linha 16) e a assertion que está sendo repetida (linha 17) no teste testEncodeDecodeBlanks e mova-as para o novo método criado (Não mude os nomes das variáveis e após mover exclua essas linhas do método anterior)."+
+        "Passo 3: Antes da atribuição e da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
                 "final String plain = \"Mind those pesky blanks\"; "+
                 "final String encoded2 = \"=?UTF-8?Q?Mind_those_pesky_blanks?=\"; "+
                 "final QCodec qcodec = new QCodec(); "+
                 "qcodec.setEncodeBlanks(false); "+
                 "String s = qcodec.encode(plain); "+
-                "s = qcodec.decode(encoded2); "+
-        "Passo 4: Após mover a assertion que estava repetida e atribuição da variável s, ambas devem ser excluídas do teste testEncodeDecodeBlanks.",
+        "Passo 4: Remova a variável encoded2 do primeiro método (linha 5)",
 
 
     refSmell9: // pap-da-3
         "Passo 1: Crie um segundo teste com o nome do método testDecodeObjectsExtracted(), do tipo void e inclua o throws Exception no método. Lembre-se de utilizar a notação @Test; "+
-        "Passo 2: Separe a assertion que está sendo repetida no teste testDecodeObjects e mova-a para o novo método criado. "+
+        "Passo 2: Separe a atribuição (linha 10) e a assertion que está sendo repetida (linha 11) no teste testDecodeObjects e mova-as para o novo método criado (Não mude os nomes das variáveis e após mover exclua essas linhas do método anterior). "+
         "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
             "final QuotedPrintableCodec qpcodec = new QuotedPrintableCodec(); "+
             "final String plain = \"1+1 =3D 2\"; "+
             "String decoded = (String) qpcodec.decode((Object) plain); "+
             "final byte[] plainBA = plain.getBytes(StandardCharsets.UTF_8); "+
-            "final byte[] decodedBA = (byte[]) qpcodec.decode((Object) plainBA); "+
-            "decoded = new String(decodedBA); "+
-        "Passo 4: Após mover a assertion que estava repetida e atribuição da variável decoded, ambas devem ser excluídas do teste testDecodeObjects.",
+            "final byte[] decodedBA = (byte[]) qpcodec.decode((Object) plainBA); ",
 
             
     // Assertion Roulette: pap-ar-1

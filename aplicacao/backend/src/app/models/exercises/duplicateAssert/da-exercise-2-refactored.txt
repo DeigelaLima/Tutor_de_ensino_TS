@@ -2,7 +2,6 @@
 public void testEncodeDecodeBlanks() throws Exception {
       final String plain = "Mind those pesky blanks";
       final String encoded1 = "=?UTF-8?Q?Mind those pesky blanks?=";
-      final String encoded2 = "=?UTF-8?Q?Mind_those_pesky_blanks?=";
       final QCodec qcodec = new QCodec();
       qcodec.setEncodeBlanks(false);
       String s = qcodec.encode(plain);
