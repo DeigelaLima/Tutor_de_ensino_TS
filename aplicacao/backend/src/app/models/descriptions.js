@@ -44,11 +44,11 @@ const descriptions = {
     "respeitando as opções de codificação em letras maiúsculas e minúsculas.",
     de8: // desc-da-2
     "O teste testEncodeDecodeBlanks faz parte do código de produção da biblioteca Apache Commons Codec, "+
-    "implementando a classe QCodec responsável pela codificação e decodificação de strings no formato 'quoted-printable', "+
+    "implementando a classe QCodec responsável pela codificação e decodificação de strings no formato quoted-printable, "+
     "conforme a norma RFC 1522. Este formato é amplamente utilizado para representar dados binários de maneira segura em e-mails, "+
     "permitindo apenas caracteres imprimíveis. O teste verifica se a classe QCodec manipula corretamente espaços em branco, "+
     "mantendo-os intactos ou substituindo-os por sublinhados, conforme especificado pela RFC 1522. "+
-    "Essa verificação garante o comportamento preciso da classe ao lidar com espaços em branco durante a codificação e decodificação de strings",
+    "Essa verificação garante o comportamento preciso da classe ao lidar com espaços em branco durante a codificação e decodificação de strings.",
     de9: // desc-da-3
     "O teste testDecodeObjects pertence ao código de produção da classe QuotedPrintableCodec no pacote org.apache.commons.codec.net, "+
     "parte integrante da biblioteca Apache Commons Codec. Utilizada para codificar e decodificar dados no formato Quoted-Printable, "+
