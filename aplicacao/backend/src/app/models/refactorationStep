@@ -80,20 +80,20 @@ const refactorationStep = {
                 "Assertion 1: \"Codificação de ru_msg esperada.\" " +
                 "Assertion 2: \"Codificação de ch_msg esperada.\" "+
                 "Assertion 3: \"Decodificação de ru_msg igual à original.\" "+
-                "Assertion 4: \"Decodificação de ch_msg igual à original.\" ",
+                "Assertion 4: \"Decodificação de ch_msg igual à original.\"",
 
     refSmell11: // pap-ar-2
         "Para iniciar a refatoração do teste de unidade testDefaultEncoding, que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1 : Localize no teste a assertion que necessita de mensagem explicativas. "+
         "Passo 2 - Seguindo a ordem em que a assertion aparece no teste, é necessário inserir no terceiro parâmetro da assertion a frase a seguir: "+
-                "Assertion 1: \"As codificações devem ser iguais.\" ",
+                "Assertion 1: \"As codificações devem ser iguais.\"",
 
     refSmell12: // pap-ar-3
         "Para iniciar a refatoração do teste de unidade testDecodeInvalidContent, que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Localize no teste as assertions que necessitam de mensagens explicativas. "+
         "Passo 2: Seguindo a ordem em que as assertions aparecem no teste, é necessário inserir no terceiro parâmetro de cada assertion as frases a seguir: "+
             "Assertion 1: \"Tamanho do array resultante deve ser igual ao array original.\" "+
-            "Assertion 2: \"Bytes individuais devem corresponder após a decodificação.\" ",
+            "Assertion 2: \"Bytes individuais devem corresponder após a decodificação.\"",
 
 
 
