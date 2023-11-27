@@ -95,8 +95,10 @@ const refactorationStep = {
             "Assertion 1: \"Tamanho do array resultante deve ser igual ao array original.\" "+
             "Assertion 2: \"Bytes individuais devem corresponder após a decodificação.\"",
 
+}
 
-
+for (const key in refactorationStep) {
+    refactorationStep[key] = refactorationStep[key].replace(/\n/g, '<br>');
 }
 
 module.exports = refactorationStep
