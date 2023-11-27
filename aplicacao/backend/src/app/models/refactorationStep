@@ -43,7 +43,7 @@ const refactorationStep = {
         "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Crie um segundo teste com o nome do método testEncodeHexByteArrayHelloWorldLowerCaseHexExtracted(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testEncodeHexByteArrayHelloWorldLowerCaseHex' e mova-a para o novo método criado; "+
-        "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
+        "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma:\n"+
                 "final byte[] b = StringUtils.getBytesUtf8(\"Hello World\");\n"+
                 "char[] actual;\n"+ 
                 "final String expected = \"48656c6c6f20576f726c64\";",
@@ -52,7 +52,7 @@ const refactorationStep = {
         "Para iniciar a refatoração do teste de unidade testEncodeDecodeBlanks, que contém o 'smell', você deve seguir o seguinte passo: "+
         "Passo 1 - Crie um segundo teste com o nome do método testEncodeDecodeBlanksExtracted(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testEncodeDecodeBlanks' mova-a para o novo método criado. "+
-        "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
+        "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma:\n"+
                 "final String plain = 'Mind those pesky blanks';\n"+
                 "final String encoded2 = '=?UTF-8?Q?Mind_those_pesky_blanks?=';\n"+
                 "final QCodec qcodec = new QCodec();\n"+
@@ -64,7 +64,7 @@ const refactorationStep = {
         "Para iniciar a refatoração do teste de unidade que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Crie um segundo teste com o nome do método testDecodeObjectsExtracted(), lembre-se de utilizar a notação @Test; "+
         "Passo 2: Separe a assertion que está sendo repetida no teste 'testDecodeObjects' e mova-a para o novo método criado. "+
-        "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma: "+
+        "Passo 3: Antes da assertion que estava repetida, inclua as variáveis, objetos e chamadas de métodos com seus respectivos valores que fazem parte da assertion, da seguinte forma:\n"+
             "final QuotedPrintableCodec qpcodec = new QuotedPrintableCodec();\n"+
             "final String plain = '1+1 =3D 2';\n"+
             "String decoded = (String) qpcodec.decode((Object) plain);\n"+
@@ -98,7 +98,7 @@ const refactorationStep = {
 }
 
 for (const key in refactorationStep) {
-    refactorationStep[key] = refactorationStep[key].replace(/\n/g, '<br>');
+    refactorationStep[key] = refactorationStep[key].replace(/\n/g, ' ');
 }
 
 module.exports = refactorationStep
