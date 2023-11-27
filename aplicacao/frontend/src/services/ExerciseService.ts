@@ -9,7 +9,6 @@ const instance = axios.create({
 export async function getExercisesbyTheirId(id: number) {
 
     const response = await instance.get(`/exercise/${id}`);
-    console.log(response.data)
     return response.data;
 
 }
