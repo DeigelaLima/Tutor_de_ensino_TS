@@ -92,7 +92,7 @@ const refactorationStep = {
         "Para iniciar a refatoração do teste de unidade testDecodeInvalidContent, que contém o 'smell', você deve seguir os seguintes passos: "+
         "Passo 1: Localize no teste as assertions que necessitam de mensagens explicativas. "+
         "Passo 2: Seguindo a ordem em que as assertions aparecem no teste, é necessário inserir no terceiro parâmetro de cada assertion as frases a seguir: "+
-            "Assertion 1: \"Tamanho do array resultante deve ser igual ao array original.' "+
+            "Assertion 1: \"Tamanho do array resultante deve ser igual ao array original.\" "+
             "Assertion 2: \"Bytes individuais devem corresponder após a decodificação.\" ",
 
 
