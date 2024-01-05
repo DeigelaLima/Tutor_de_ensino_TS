@@ -5,7 +5,7 @@
         <v-img src="@/assets/clarity_bug-solidJoanita.svg" alt="Logo" />
       </v-avatar>
       <v-app-bar-title class="text-left-tutor ml-1"
-        >Tutor de Ensino</v-app-bar-title
+        >TERTS</v-app-bar-title
       >
     </button>
 
