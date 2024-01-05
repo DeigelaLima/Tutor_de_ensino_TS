@@ -48,5 +48,6 @@
 .text-left-tutor {
   font-size: 35px;
   color: white;
+  font-weight: bold;
 }
 </style>
