@@ -1,11 +1,11 @@
 <template>
   <v-container fluid class="home-container">
-    <v-container>
+    <v-container style="min-width: 100vw; margin: 0;">
       <v-row>
         <!-- Coluna da esquerda para o texto -->
         <v-col cols="12" sm="6">
           <v-card-text class="text-left-bemVindo">
-            <p>Bem-vindo ao tutor de ensino!</p>
+            <h2>Bem-vindo ao tutor de ensino!</h2>
           </v-card-text>
           <v-card-text class="text-left-refatoracao">
             <p>
@@ -16,7 +16,7 @@
         </v-col>
 
         <!-- Coluna da direita para a imagem -->
-        <v-col cols="12" sm="6">
+        <v-col cols="12" sm="5">
           <v-img
             src="@/assets/Group6homePage.svg"
             alt="Bem-vindo"
@@ -25,50 +25,46 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <v-col class="choice">
-      <p>Escolha um tipo de Test Smell para começar:</p>
-    </v-col>
     <!-- Botões -->
     <v-footer app>
-      <v-row justify="center">
-        <v-col
-          cols="3"
-          v-for="(testSmell, index) in typesOfTestSmells"
-          :key="index"
-        >
-          <router-link
-            :to="`/chooseexercise/${testSmell.id}`"
-            class="text-decoration-none text-reset"
-          >
-            <v-btn
-              block
-              rounded="lg"
-              size="large"
-              class="green-button white--text"
-            >
-              {{ testSmell.name }}
-            </v-btn>
-          </router-link>
+      <v-col>
+        <v-col class="choice">
+          <p>Escolha um tipo de Test Smell para começar:</p>
         </v-col>
-      </v-row>
+        <v-row justify="center">
+          <v-col class="smell-type" cols="3" v-for="(testSmell, index) in testSmells" :key="index">
+            <router-link
+              :to="`/chooseexercise/${testSmell.id}`"
+              class="text-decoration-none text-reset"
+            >
+              <v-btn
+                block
+                rounded="lg"
+                size="large"
+                class="green-button"
+              >
+                <p>
+                  {{ testSmell.name }}
+                </p>
+              </v-btn>
+            </router-link>
+          </v-col>
+        </v-row>
+      </v-col>
     </v-footer>
   </v-container>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { TestSmell } from "./../models/TestSmellModel";
+import { onMounted, ref } from "vue";
+import { getTestSmells } from "@/services/TestSmellService";
 
-type TestSmell = {
-  id: number;
-  name: string;
-};
-const typesOfTestSmells = ref<TestSmell[]>([
-  { id: 1, name: "Assertion Roulette" },
-  { id: 2, name: "Duplication Assert" },
-  { id: 3, name: "Eager Test" },
-  { id: 4, name: "Ignored Test" },
-]);
+const testSmells = ref<TestSmell[]>([]);
+
+onMounted(async () => {
+  testSmells.value = getTestSmells();
+});
 </script>
 
 <style scoped>
@@ -81,8 +77,10 @@ const typesOfTestSmells = ref<TestSmell[]>([
 
 /* imagem homePage */
 .image-size {
-  padding: 320px;
+  size: 20em;
+  margin-top: 80px
 }
+
 
 /* Botões */
 .green-button {
@@ -91,9 +89,13 @@ const typesOfTestSmells = ref<TestSmell[]>([
   font-size: 20px;
   padding: 40px 8px;
   margin-bottom: 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .text-left-bemVindo {
-  font-size: 30px;
+  font-size: 35px;
   text-align: left;
   text-align: center;
   color: black;
@@ -101,7 +103,7 @@ const typesOfTestSmells = ref<TestSmell[]>([
 }
 
 .text-left-refatoracao {
-  font-size: 20px;
+  font-size: 25px;
   text-align: left;
   text-align: center;
   color: black;
@@ -110,5 +112,6 @@ const typesOfTestSmells = ref<TestSmell[]>([
   font-size: 30px;
   color: black;
   text-align: center;
+  margin-bottom:  20px;
 }
 </style>

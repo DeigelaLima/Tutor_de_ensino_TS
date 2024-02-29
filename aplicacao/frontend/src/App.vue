@@ -1,9 +1,11 @@
 <template>
   <v-app>
-    <v-main>
-      <nav-bar></nav-bar>
-      <router-view />
-    </v-main>
+    <v-col>
+      <nav-bar />
+      <v-main>
+        <router-view />
+      </v-main>
+    </v-col>
   </v-app>
 </template>
 
@@ -22,3 +24,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+</style>
