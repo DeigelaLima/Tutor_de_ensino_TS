@@ -1,4 +1,4 @@
-
+![Logo](https://github.com/DeigelaLima/Tutor_de_ensino_TS/raw/main/aplicacao/frontend/src/assets/readme-prints/Group%208.svg)
 
 ## Tutor de Ensino para Refatoração de Test Smells (TERTS)
 
@@ -31,11 +31,19 @@ A seguir estão enumeradas algumas das funcionalidades do TERTS:
 
 1.  São quatro botões, cada um indicando seu respectivo tipo  de test smell  a ser refatorado. Ao clicar no botão o usuário é levado para a tela de escolha do exercício. 
 2.  Esse botão leva o usuário para outra página que tem algumas informações sobre o projeto e seus desenvolvedores.
+
+![Tela 1](https://github.com/DeigelaLima/Tutor_de_ensino_TS/raw/main/aplicacao/frontend/src/assets/readme-prints/Group%2018.svg)
+
 3.  É uma caixa de texto que dá um breve resumo sobre o tipo de test smell que o usuário escolheu.
 4.   São botões que levam o usuário para o exercício  que ele escolher.
+
+![Tela 2](https://github.com/DeigelaLima/Tutor_de_ensino_TS/raw/main/aplicacao/frontend/src/assets/readme-prints/Group%2019.svg)
+
+
 5.  É um editor de texto com o código que possui o smell e deve ser refatorado pelo usuário.
 6.  É uma caixa de texto com um breve resumo do que o código de teste usado no exercício faz.
 7.  É o passo a passo que deve ser seguido pelo usuário para que a refatoração do test smell seja possível.
 8.  Após realizar a refatoração o usuário pode clicar nesse botão para checar o resultado através de um pop-up de acerto ou erro.
 9.  Esse botão leva o usuário para a página de exercícios do test smell escolhido anteriormente.
 
+![Tela 3](https://github.com/DeigelaLima/Tutor_de_ensino_TS/raw/main/aplicacao/frontend/src/assets/readme-prints/Group%2020.svg)
