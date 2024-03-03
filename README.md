@@ -51,4 +51,4 @@ A seguir estão enumeradas algumas das funcionalidades do TERTS:
 10. Caixa de texto que apresenta o feedback sobre a refatoração do usuário.
 11. Esse botão leva o usuário para a página de exercícios do test smell escolhido anteriormente.
 
-![Tela 4](https://github.com/DeigelaLima/Tutor_de_ensino_TS/raw/main/aplicacao/frontend/src/assets/readme-prints/Group%2020.svg)
+![Tela 4](https://github.com/DeigelaLima/Tutor_de_ensino_TS/raw/main/aplicacao/frontend/src/assets/readme-prints/Group%2022.svg)
