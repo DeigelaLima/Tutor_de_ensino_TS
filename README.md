@@ -41,9 +41,12 @@ A seguir estão enumeradas algumas das funcionalidades do TERTS:
 
 
 5.  É um editor de texto com o código que possui o smell e deve ser refatorado pelo usuário.
-6.  É uma caixa de texto com um breve resumo do que o código de teste usado no exercício faz.
+6.  É uma caixa de texto com um breve resumo do código de produção ao qual o código de teste pertence, bem como a definição do que o código de teste faz.
 7.  É o passo a passo que deve ser seguido pelo usuário para que a refatoração do test smell seja possível.
 8.  Após realizar a refatoração o usuário pode clicar nesse botão para checar o resultado através de um pop-up de acerto ou erro.
 9.  Esse botão leva o usuário para a página de exercícios do test smell escolhido anteriormente.
 
-![Tela 3](https://github.com/DeigelaLima/Tutor_de_ensino_TS/raw/main/aplicacao/frontend/src/assets/readme-prints/Group%2020.svg)
+![Tela 3](https://github.com/DeigelaLima/Tutor_de_ensino_TS/raw/main/aplicacao/frontend/src/assets/readme-prints/Group%2022.svg)
+
+10. Caixa de texto que apresenta o feedback sobre a refatoração do usuário.
+11. Esse botão leva o usuário para a página de exercícios do test smell escolhido anteriormente.
