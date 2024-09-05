@@ -15,6 +15,7 @@
           :model-value="exerciseChoose"
           style="height: 65vh; width: 50vw; margin: 2rem 0 0 2rem"
           @change="(value) => handleChange(value)"
+          :extensions="language"
         />
       </v-col>
       <v-col>
@@ -68,15 +69,17 @@ import { Codemirror } from "vue-codemirror";
 import ButtonPopup from "../components/ButtonPopup.vue";
 import { getExercisesbyTheirId } from "@/services/ExerciseService";
 import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
+import { java } from '@codemirror/lang-java';
 
+const language = [java()];
 const router = useRouter();
 const route = useRoute();
 let id = Number(route.params.idSmell);
 let idSmell = Number(route.params.id);
 let exerciseChoose = ref<string>();
 const refactorState = ref(true);
-const refactoredExercise = ref<string>();
-const userExercise = ref<string>();
+const refactoredExercise = ref<string>("");
+const userExercise = ref<string>("");
 const title = ref<string>();
 const description = ref<string>();
 const feedback = ref(false);
