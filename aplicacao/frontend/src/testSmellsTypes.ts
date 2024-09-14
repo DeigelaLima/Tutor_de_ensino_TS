@@ -11,7 +11,7 @@ export const TestSmells = [
     },
     { 
         id: 2,
-        name: "Duplication Assert", 
+        name: "Duplicate Assert", 
         description: "Ocorre quando um método de teste repete a mesma condição várias vezes dentro do próprio método. "+
         "Para evitar isso, é aconselhável refatorar, criando um novo método de teste se a mesma condição precisa ser verificada com valores diferentes. "+
         "Isso contribui para a organização do código e evita redundâncias.",
