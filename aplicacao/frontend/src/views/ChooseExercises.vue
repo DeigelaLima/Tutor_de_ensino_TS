@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="home-container">
-    <v-row class="row-home" align="center" justify="space-between" no-gutters>
+    <v-row class="row-home" align="center" justify="space-between">
       <!-- Coluna da Esquerda: Texto e Imagem -->
       <v-col cols="12" md="6" class="left-column">
         <div class="img-container">
@@ -17,34 +17,32 @@
           class="card-spacing"
         />
 
-        <v-img
-          src="@/assets/image-choose-test.svg"
-          alt="Resolver bugs"
-          class="image-size"
-        />
+        <div style="display: flex; justify-content: center;"> 
+          <v-img
+            src="@/assets/image-choose-test.svg"
+            alt="Resolver bugs"
+            class="image-size"
+          />
+        </div>
       </v-col>
 
       <!-- Coluna da Direita: Botões de Exercícios -->
       <v-col cols="12" md="5" class="right-column">
-        <v-row class="buttons-row">
-          <v-col
-            cols="12"
-            sm="8"
-            v-for="id in testSmellChoose?.exercise?.idSmell"
-            :key="id"
-            class="button-container"
+        <v-col
+          v-for="id in testSmellChoose?.exercise?.idSmell"
+          :key="id"
+          cols="12"
+          class="smell-type"
+        >
+          <router-link
+            :to="`/chooseexercise/${testSmellChoose?.id}/${id}`"
+            class="link-reset"
           >
-            <router-link
-              :to="`/chooseexercise/${testSmellChoose?.id}/${id}`"
-              class="text-decoration-none text-reset"
-            >
-              <ButtonGrl
-                :number-exercise="++numberExercise"
-                class="button"
-              ></ButtonGrl>
-            </router-link>
-          </v-col>
-        </v-row>
+            <v-btn block rounded="lg" size="large" class="green-button">
+              Exercício {{ ++numberExercise }}
+            </v-btn>
+          </router-link>
+        </v-col>
       </v-col>
     </v-row>
   </v-container>
@@ -98,21 +96,23 @@ onBeforeRouteUpdate(async (to, from) => {
   text-align: left;
 }
 
-.right-column {
+.green-button {
+  width: 100%;
+  height: 48px;
+  background-color: #047857;
+  color: white;
+  font-size: 18px;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.buttons-row {
+.right-column {
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 .img-container {
@@ -121,7 +121,12 @@ onBeforeRouteUpdate(async (to, from) => {
 }
 
 .image-size {
-  max-width: 100%;
+  max-width: 60%;
   height: auto;
+}
+
+.link-reset {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
