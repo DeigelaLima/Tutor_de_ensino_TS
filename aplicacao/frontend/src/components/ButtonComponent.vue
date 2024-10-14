@@ -15,7 +15,7 @@ defineProps<{
 <style scoped>
     
     .exercise-button {
-        background-color: rgba(86, 175, 119, 1);
+        background-color: #047857;
         color: white;
         height: 40px !important;
         width: 170px;

@@ -1,7 +1,7 @@
 <template>
     <button class="back-button" :onclick="onclick">
-        <v-avatar size="30" class="mr-1">
-            <v-img src="../assets/arrow.png"/>
+        <v-avatar size="32px">
+            <v-img src="@/assets/back-button.svg" alt="Voltar" />
         </v-avatar>
     </button>
 </template>
