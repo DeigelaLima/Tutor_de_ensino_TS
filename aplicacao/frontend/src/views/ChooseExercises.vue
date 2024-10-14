@@ -1,37 +1,53 @@
 <template>
-  <container>
-    <v-row class="context-of-description-and-exercises">
-      <v-col cols="8" sm="4">
+  <v-container fluid class="home-container">
+    <v-row class="row-home" align="center" justify="space-between" no-gutters>
+      <!-- Coluna da Esquerda: Texto e Imagem -->
+      <v-col cols="12" md="6" class="left-column">
+        <div class="img-container">
+          <button :onclick="() => $router.push('/')">
+            <v-avatar size="32px">
+                <v-img src="@/assets/back-button.svg" alt="Voltar" />
+            </v-avatar>
+          </button>
+        </div>
+
         <TestSmellCard
           :description="testSmellChoose?.description"
           :name="testSmellChoose?.name"
-        ></TestSmellCard>
+          class="card-spacing"
+        />
+
+        <v-img
+          src="@/assets/image-choose-test.svg"
+          alt="Resolver bugs"
+          class="image-size"
+        />
       </v-col>
-      <v-col cols="4" sm="4">
-        <div>
-          <router-link
+
+      <!-- Coluna da Direita: Botões de Exercícios -->
+      <v-col cols="12" md="5" class="right-column">
+        <v-row class="buttons-row">
+          <v-col
+            cols="12"
+            sm="8"
             v-for="id in testSmellChoose?.exercise?.idSmell"
             :key="id"
-            :to="`/chooseexercise/${testSmellChoose?.id}/${id}`"
-            class="text-decoration-none text-reset"
+            class="button-container"
           >
-            <ButtonGrl
-              :number-exercise="++numberExercise"
-              class="button"
-            ></ButtonGrl>
-          </router-link>
-        </div>
+            <router-link
+              :to="`/chooseexercise/${testSmellChoose?.id}/${id}`"
+              class="text-decoration-none text-reset"
+            >
+              <ButtonGrl
+                :number-exercise="++numberExercise"
+                class="button"
+              ></ButtonGrl>
+            </router-link>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
-
-    <v-col cols="6" sm="6" class="img-container">
-      <v-img
-        src="@/assets/Bug_solving.svg"
-        alt="Resolver bugs"
-        class="image-size"
-      />
-    </v-col>
-  </container>
+  </v-container>
 </template>
 
 <script setup lang="ts">
@@ -64,30 +80,48 @@ onBeforeRouteUpdate(async (to, from) => {
 </script>
 
 <style scoped>
-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2.5vh;
-}
-.context-of-description-and-exercises {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-top: 5vh;
+.home-container {
+  background-color: white;
+  min-height: 100vh;
+  padding: 40px;
 }
 
-.button:not(:first-child()) {
-  margin-top: 15px;
+.row-home {
+  margin: 40px 80px;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  text-align: left;
+}
+
+.right-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.img-container {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .image-size {
-  max-width: 60vh;
-  width: 60vh;
-  padding: 280px;
-}
-.img-container {
-  display: flex;
-  justify-content: center;
+  max-width: 100%;
+  height: auto;
 }
 </style>

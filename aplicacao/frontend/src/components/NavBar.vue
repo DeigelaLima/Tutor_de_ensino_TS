@@ -1,7 +1,7 @@
 <template>
   <v-app-bar class="bar-nav">
     <button class="logo-button" @click="$router.push('/')">
-      <v-avatar size="160px" class="ml-1">
+      <v-avatar size="160px">
         <v-img src="@/assets/logo-terts.svg" alt="Logo" />
       </v-avatar>
     </button>

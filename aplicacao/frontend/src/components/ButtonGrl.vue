@@ -1,7 +1,7 @@
 <template>
-  <v-btn block rounded="xs" class="green-button"
-    >Exercício {{ numberExercise }}</v-btn
-  >
+  <v-btn block rounded="xs" class="green-button">
+    Exercício {{ numberExercise }}
+  </v-btn>
 </template>
 
 <script setup lang="ts">
@@ -10,17 +10,19 @@ defineProps<{
 }>();
 </script>
 
-<style>
+<style scoped>
 .green-button {
-  background-color: rgba(86, 175, 119, 1);
+  background-color: #047857;
   color: white;
-  font-size: 20px;
-  padding: 2px 8px;
-  justify-content: flex-start;
-  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .v-btn.v-btn--density-default {
-  height: 75px;
+  width: 100%;
+  height: 64px;
 }
 </style>
