@@ -10,15 +10,15 @@
         <h1 class="title">{{ title }}</h1>
         <p class="description">{{ description }}</p>
       </v-row>
-      <v-col>
+      <v-col cols="12" md="6">
         <Codemirror
           :model-value="exerciseChoose"
-          style="height: 65vh; width: 50vw; margin: 2rem 0 0 2rem"
+          class="code-editor"
           @change="(value) => handleChange(value)"
           :extensions="language"
         />
       </v-col>
-      <v-col>
+      <v-col cols="12" md="6">
         <v-card-text align="center">
           <h2 class="intro-step">
             Para iniciar a refatoração do teste de unidade que contém o "test
@@ -162,25 +162,47 @@ onBeforeRouteUpdate(async (to, from) => {
 </script>
 
 <style scoped>
+
+.title {
+  color: #378f37;
+}
 .card-step {
-  background-color: #d9f3ed;
-  border-radius: 10px;
+  background-color: #ffffff;
+  border-radius: 30px;
   padding-bottom: 2rem;
   min-height: 100px;
+  border: 4px solid #378f37;
+  
 }
 
 .step-assert {
   padding-bottom: 1rem;
   padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: 19px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: justify;
+  
 }
+
 .step {
   padding-bottom: 1rem;
   padding-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  
+  
 }
+
 .intro-step {
   text-align: justify;
   padding-bottom: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: justify;
 }
+
 .foot-buttons {
   margin-top: 0rem;
   margin-bottom: 2rem;
@@ -190,6 +212,7 @@ onBeforeRouteUpdate(async (to, from) => {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 30px;
 }
 
 .header {
@@ -209,19 +232,90 @@ onBeforeRouteUpdate(async (to, from) => {
   padding: 2rem;
   margin: 2rem;
   border-radius: 10px;
-  background-color: #d9f3ed;
+  background-color: #ffffff;
   font-size: 20px;
-  min-width: 95vw;
+  min-width: 100%;
   min-height: 150px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: justify;
 }
 
 .step-by-step {
   text-align: start;
-  width: 600px;
+  width: 100%;
   font-size: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: justify;
 }
 
 .steps-title {
   padding: 1rem 0rem;
+  color: #378f37;
 }
+
+
+@media (max-width: 600px) {
+  .description {
+    font-size: 16px;
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .step-by-step {
+    font-size: 18px;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .card-step {
+    padding-bottom: 1rem;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 960px) {
+  .description {
+    font-size: 18px;
+  }
+
+  .step-by-step {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .code-editor {
+    height: 55vh !important;
+    width: 90% !important;
+    margin: 1.5rem 0 0 0 !important;
+  }
+}
+
+@media (min-width: 961px) {
+  .description {
+    font-size: 20px;
+  }
+
+  .step-by-step {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .code-editor {
+    height: 65vh !important;
+    width: 100% !important;
+    margin: 2rem 0 0 2rem !important;
+  }
+}
+
 </style>

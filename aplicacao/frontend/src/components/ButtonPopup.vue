@@ -13,7 +13,7 @@
 
     <template v-if="refactor" v-slot:default="{}">
       <v-card class="success" title="Parabéns!">
-        <v-card-text>
+        <v-card-text class="text">
           Excelente trabalho!<br />O test smell foi refatorado com sucesso,
           deixando o código de teste mais limpo.
         </v-card-text>
@@ -27,13 +27,13 @@
 
     <template v-else v-slot:default="{ isActive }">
       <v-card class="fail" title="Que pena :(">
-        <v-card-text>
+        <v-card-text class="text">
           Tem algo errado...<br />Tente novamente seguindo o passo a passo.
         </v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn text="Fechar" @click="isActive.value = false"></v-btn>
+          <v-btn class="green-button" @click="isActive.value = false">Fechar</v-btn>
         </v-card-actions>
       </v-card>
     </template>
@@ -58,13 +58,16 @@ defineProps<{
 
 <style scoped>
 .success {
-  background-color: rgba(86, 175, 119, 1);
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: #378f37;
+  text-align: center;
 }
 
 .fail {
-  background-color: rgb(172, 74, 74);
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: #378f37;
+  text-align: center;
+  padding-top: 2rem;
 }
 
 .exercise-button {
@@ -74,5 +77,20 @@ defineProps<{
   width: 170px;
   margin-top: 2rem;
   text-align: center;
+
+}
+
+.green-button{
+  background-color: #4caf50; 
+  color: white;
+  text-transform: none;  
+}
+
+.text{
+  color: black;
+}
+
+.exercise-button{
+  border-radius: 20px;
 }
 </style>

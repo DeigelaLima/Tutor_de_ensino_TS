@@ -3,7 +3,7 @@
     <div class="content">
       <div class="description">
         <h1 class="h1-text">Sobre</h1>
-        <v-row class="about-tutor"
+        <v-row class="about-tutor" 
           >O Tutor de Ensino é uma aplicação educacional dedicada ao ensino de
           técnicas de refatoração de testes de unidades, focalizando na
           eliminação de "smells" para capacitar alunos de graduação nas áreas de
