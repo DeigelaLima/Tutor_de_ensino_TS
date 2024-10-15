@@ -3,7 +3,7 @@
     <h1 class="margin-description-smell">
       {{ name }}
     </h1>
-    <h4>{{ description }}</h4>
+    <p class="test-description">{{ description }}</p>
   </div>
 </template>
 
@@ -15,17 +15,15 @@ defineProps<Omit<TestSmell, "id">>();
 
 <style>
 .container-text {
-  background-color: #d9f3ed;
-  text-align: center;
-  padding: 50px;
-  border-radius: 10px;
+  text-align: left;
 }
+
 .container-text > h4 {
   text-align: justify;
   text-justify: inter-word;
 }
 
 .margin-description-smell {
-  margin-bottom: 20px;
+  color: #047857;
 }
 </style>

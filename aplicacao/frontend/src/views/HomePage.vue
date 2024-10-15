@@ -9,7 +9,9 @@
         <p class="text-description">
           Aqui você vai encontrar exercícios de teste de unidade para a refatoração de <i>test smells</i>.
         </p>
-        <v-img src="@/assets/image-home.svg" alt="Bem-vindo" class="image-home" />
+        <div style="display: flex; justify-content: center;">
+          <v-img src="@/assets/image-home.svg" alt="Bem-vindo" class="image-home" />
+        </div>
       </v-col>
 
       <!-- Coluna da Direita: Botões de Seleção de Test Smell -->
@@ -58,7 +60,7 @@ onMounted(async () => {
 .left-column {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
   justify-content: center;
   text-align: left;
 }
@@ -66,7 +68,7 @@ onMounted(async () => {
 .right-column {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
   align-items: center;
 }
 
@@ -85,23 +87,22 @@ onMounted(async () => {
 }
 
 .image-home {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
-  margin-top: 20px;
 }
 
 .text-choice {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 16px;
   text-align: left;
 }
 
 .green-button {
+  width: 100%;
+  height: 48px;
   background-color: #047857;
   color: white;
   font-size: 18px;
-  padding: 16px;
   text-align: center;
   display: flex;
   align-items: center;
