@@ -204,7 +204,7 @@ function handleRefactor() {
   .description {
     font-size: 18px;
     margin: 1rem 0 1rem 0;
-    padding: 0;
+    padding: 1rem;
   }
 
   .step-by-step {
@@ -243,7 +243,7 @@ function handleRefactor() {
   .description {
     font-size: 1.1rem;
     margin: 1rem 0 1rem 0;
-    padding: 0;
+    padding: 1rem;
   }
 
   .code-editor {
