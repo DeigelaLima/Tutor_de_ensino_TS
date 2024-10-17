@@ -7,12 +7,12 @@
         />
       </v-row>
       <v-row class="header">
-        <h1 class="title">{{ title }}</h1>
-        <p class="description">{{ description }}</p>
+        <h1 class="title">{{ exerciseStore.title }}</h1>
+        <p class="description">{{ exerciseStore.description }}</p>
       </v-row>
       <v-col cols="12" md="6">
         <Codemirror
-          :model-value="exerciseChoose"
+          :model-value="exerciseStore.exerciseChoose"
           class="code-editor"
           @change="(value) => handleChange(value)"
           :extensions="language"
@@ -30,7 +30,7 @@
               <p
                 :key="step"
                 :class="checkIfNeedsPasso(step) ? 'step' : ''"
-                v-for="step in formatedSteps"
+                v-for="step in exerciseStore.formatedSteps"
               >
                 {{ checkIfNeedsPasso(step) + step }}
               </p>
@@ -39,7 +39,7 @@
               <p
                 class="step-assert"
                 :key="assert"
-                v-for="assert in formatedAsserts"
+                v-for="assert in exerciseStore.formatedAsserts"
               >
                 {{ "Assertion" + assert }}
               </p>
@@ -52,9 +52,9 @@
         <v-row class="foot-buttons" justify="space-around">
           <ButtonPopup
             text="Refatorar"
-            :disable="refactorState"
+            :disable="exerciseStore.refactorState"
             :onclick="handleRefactor"
-            :refactor="feedback"
+            :refactor="exerciseStore.feedback"
           />
         </v-row>
       </v-col>
@@ -64,72 +64,32 @@
 
 <script setup lang="ts">
 import BackButton from "@/components/BackButton.vue";
-import { ref } from "vue";
 import { Codemirror } from "vue-codemirror";
 import ButtonPopup from "../components/ButtonPopup.vue";
-import { getExercisesbyTheirId } from "@/services/ExerciseService";
 import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 import { java } from "@codemirror/lang-java";
+import { useExerciseStore } from "@/stores/exerciseStore";
 
 const language = [java()];
 const router = useRouter();
 const route = useRoute();
 let id = Number(route.params.idSmell);
 let idSmell = Number(route.params.id);
-let exerciseChoose = ref<string>();
-const refactorState = ref(true);
-const refactoredExercise = ref<string>("");
-const userExercise = ref<string>("");
-const title = ref<string>();
-const description = ref<string>();
-const feedback = ref(false);
-const steps = ref<string>();
-const formatedSteps = ref<string[]>([]);
-const formatedAsserts = ref<string[]>([]);
 
-function handleRefactor() {
-  if (checkRefactor()) {
-    feedback.value = true;
-  } else {
-    feedback.value = false;
+const exerciseStore = useExerciseStore();
+
+exerciseStore.fetchExercise(id);
+
+onBeforeRouteUpdate(async (to, from) => {
+  if (to.params.id !== from.params.id) {
+    id = Number(to.params.id);
+    await exerciseStore.fetchExercise(id);
   }
-}
-
-function checkRefactor() {
-  const regex = /\s/g;
-  return (
-    refactoredExercise.value?.replace(regex, "") ===
-    userExercise.value?.replace(regex, "")
-  );
-}
+});
 
 function handleChange(value: string) {
-  refactorState.value = false;
-  userExercise.value = value;
-}
-
-function formatAssertString(text: string | undefined) {
-  if (text === undefined) return;
-  let subArrays = text.split("Assertion");
-  subArrays.shift();
-  formatedAsserts.value = subArrays;
-}
-
-function formatStepString(text: string | undefined) {
-  if (text === undefined) {
-    return;
-  }
-  let subArrays;
-  if (text.indexOf("Assertion") === -1) {
-    subArrays = text.split("Passo");
-    subArrays.shift();
-    formatedSteps.value = subArrays.map((step) => step.split("\n")).flat();
-  } else {
-    let newText: string = text.substring(0, text.indexOf("Assertion"));
-    subArrays = newText.split("Passo");
-    subArrays.shift();
-    formatedSteps.value = subArrays.map((step) => step.split("\n")).flat();
-  }
+  exerciseStore.refactorState = false;
+  exerciseStore.userExercise = value;
 }
 
 function checkIfNeedsPasso(passo: string) {
@@ -140,25 +100,13 @@ function checkIfNeedsPasso(passo: string) {
   return "";
 }
 
-async function fetchExercise(id: number) {
-  const result = await getExercisesbyTheirId(id);
-  exerciseChoose.value = result.text;
-  refactoredExercise.value = result.textRefactored;
-  title.value = result.categoryName;
-  description.value = result.description;
-  steps.value = result.refactoration;
-  formatStepString(steps.value);
-  formatAssertString(steps.value);
-}
-
-fetchExercise(id);
-
-onBeforeRouteUpdate(async (to, from) => {
-  if (to.params.id !== from.params.id) {
-    id = Number(to.params.id);
-    fetchExercise(id);
+function handleRefactor() {
+  if (exerciseStore.checkRefactor()) {
+    exerciseStore.feedback = true;
+  } else {
+    exerciseStore.feedback = false;
   }
-});
+}
 </script>
 
 <style scoped>
