@@ -18,12 +18,14 @@ defineProps<Omit<TestSmell, "id">>();
   text-align: left;
 }
 
-.container-text > h4 {
-  text-align: justify;
-  text-justify: inter-word;
-}
-
 .margin-description-smell {
   color: #047857;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .container-text {
+    text-align: justify;
+  }
 }
 </style>

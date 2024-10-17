@@ -3,8 +3,8 @@
     <div class="content">
       <div class="description">
         <h1 class="h1-text">Sobre</h1>
-        <v-row class="about-tutor" 
-          >O Tutor de Ensino é uma aplicação educacional dedicada ao ensino de
+        <div class="about-tutor">
+          O Tutor de Ensino é uma aplicação educacional dedicada ao ensino de
           técnicas de refatoração de testes de unidades, focalizando na
           eliminação de "smells" para capacitar alunos de graduação nas áreas de
           tecnologia. A ferramenta oferece aprendizado efetivo sobre quatro
@@ -19,9 +19,9 @@
           refatoração de cada "smell" identificado no teste, essencial para
           proporcionar clareza e facilitar o processo de aprendizagem nas
           práticas de refatoração.
-        </v-row>
+        </div>
       </div>
-      
+
       <div class="requisites-section">
         <h1 class="h1-text">Requisitos do sistema</h1>
         <div class="about-tutor">
@@ -37,15 +37,28 @@
       <div class="test-smells-available">
         <h1 class="h1-text">Datasets disponíveis</h1>
         <div class="about-tutor">
-            Os Datasets que o Tutor de Ensino está utilizando estão disponíveis nos seguintes repositórios:
-            <div class="links">
-              <ul class="links">
-                <li><a href="https://github.com/apache/commons-codec" target="_blank">
-                  https://github.com/apache/commons-codec</a></li>
-                <li><a href="https://github.com/apache/commons-math.git" target="_blank">
-                  https://github.com/apache/commons-math.git</a></li>
-             </ul>
-            </div>
+          Os Datasets que o Tutor de Ensino está utilizando estão disponíveis
+          nos seguintes repositórios:
+          <div class="links">
+            <ul class="links">
+              <li>
+                <a
+                  href="https://github.com/apache/commons-codec"
+                  target="_blank"
+                >
+                  https://github.com/apache/commons-codec</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/apache/commons-math.git"
+                  target="_blank"
+                >
+                  https://github.com/apache/commons-math.git</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -127,6 +140,7 @@ import DeveloperCard from "@/components/DeveloperCard.vue";
 .development-team {
   display: flex;
   margin-top: 6vh;
+  gap: 2rem;
 }
 .h1-text {
   background-color: #d9f3ed;
@@ -139,5 +153,24 @@ import DeveloperCard from "@/components/DeveloperCard.vue";
 .links {
   text-align: left;
   margin-left: 40px;
+}
+@media only screen and (max-width: 600px) {
+  .about-tutor {
+    font-size: 1rem;
+  }
+  .development-team {
+    flex-wrap: wrap;
+    display: flex;
+  }
+  .links {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 960px) {
+  .development-team {
+    flex-wrap: wrap;
+    display: flex;
+  }
 }
 </style>

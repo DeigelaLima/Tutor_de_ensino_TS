@@ -4,13 +4,19 @@
       <!-- Coluna da Esquerda: Texto de Apresentação -->
       <v-col cols="12" md="6" class="left-column">
         <h2 class="text-welcome">
-          Bem-vindo ao <span class="name-terts">TERTS</span>, seu tutor de ensino!
+          Bem-vindo ao <span class="name-terts">TERTS</span>, seu tutor de
+          ensino!
         </h2>
         <p class="text-description">
-          Aqui você vai encontrar exercícios de teste de unidade para a refatoração de <i>test smells</i>.
+          Aqui você vai encontrar exercícios de teste de unidade para a
+          refatoração de <i>test smells</i>.
         </p>
-        <div style="display: flex; justify-content: center;">
-          <v-img src="@/assets/image-home.svg" alt="Bem-vindo" class="image-home" />
+        <div style="display: flex; justify-content: center">
+          <v-img
+            src="@/assets/image-home.svg"
+            alt="Bem-vindo"
+            class="image-home"
+          />
         </div>
       </v-col>
 
@@ -23,7 +29,10 @@
           cols="12"
           class="smell-type"
         >
-          <router-link :to="`/chooseexercise/${testSmell.id}`" class="link-reset">
+          <router-link
+            :to="`/chooseexercise/${testSmell.id}`"
+            class="link-reset"
+          >
             <v-btn block rounded="lg" size="large" class="green-button">
               {{ testSmell.name }}
             </v-btn>
@@ -112,5 +121,26 @@ onMounted(async () => {
 .link-reset {
   text-decoration: none;
   color: inherit;
+}
+
+@media only screen and (max-width: 600px) {
+  .row-home {
+    margin: 0;
+  }
+  .right-column {
+    justify-items: center;
+    .text-choice {
+      text-align: center;
+    }
+  }
+  .left-column {
+    text-align: center;
+  }
+  .text-welcome {
+    font-size: 2rem;
+  }
+  .home-container {
+    padding: 2rem;
+  }
 }
 </style>

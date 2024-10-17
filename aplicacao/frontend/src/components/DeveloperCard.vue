@@ -1,14 +1,19 @@
 <template>
-  <v-card class="mx-auto" max-width="344">
-    <v-img :src="foto" height="300px" cover></v-img>
+  <v-card class="mx-auto">
+    <v-img :src="foto" cover></v-img>
     <v-card-text>
-      <p class="text-h4 text--primary">{{ nome }}</p>
-      <div class="text-h6 text--primary">
+      <p class="text-h5 text-md-h5 text-lg-h5 font-weight-bold">{{ nome }}</p>
+      <div class="text-h6">
         {{ descricao }}
       </div>
     </v-card-text>
     <v-card-actions>
-      <v-btn variant="text" class="button-contact" @click="reveal = true">
+      <v-btn
+        class="button-contact"
+        variant="flat"
+        size="small"
+        @click="reveal = true"
+      >
         Formas de contato
       </v-btn>
     </v-card-actions>
@@ -19,19 +24,11 @@
           <p class="text-h4 text--primary">Meios de contato</p>
           <div class="contact-div">
             <div class="contact-line">
-              <v-img
-                src="@/assets/email-svgrepo-com.svg"
-                alt="Logo Gmail"
-                width="30px"
-              />
+              <v-img src="@/assets/email-svgrepo-com.svg" alt="Logo Gmail" />
               <label class="contact-text">{{ email }}</label>
             </div>
             <div class="contact-line" v-if="nick">
-              <v-img
-                src="@/assets/github-mark.svg"
-                alt="Logo github"
-                width="30px"
-              />
+              <v-img src="@/assets/github-mark.svg" alt="Logo github" />
               <label class="contact-text"
                 ><a
                   v-if="nick"
@@ -64,7 +61,6 @@ defineProps<{
   foto: string;
   descricao: string;
 }>();
-
 </script>
 <style>
 .v-card--reveal {
@@ -101,7 +97,33 @@ defineProps<{
   font-size: 20px;
 }
 
-.contact-line > .v-img {
-  max-width: 30px;
+@media only screen and (max-width: 600px) {
+  .v-responsive.v-img {
+    width: 15rem;
+    height: 15rem;
+  }
+  .v-card {
+    width: 45%;
+    margin-top: 1rem;
+  }
+  .v-btn__content {
+    white-space: inherit;
+  }
+}
+@media (min-width: 601px) and (max-width: 960px) {
+  .v-responsive.v-img {
+    width: 15rem;
+    height: 15rem;
+  }
+  .v-card.v-theme--light {
+    width: 45%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .v-card-actions {
+    padding: 0;
+  }
 }
 </style>

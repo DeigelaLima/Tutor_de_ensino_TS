@@ -6,7 +6,7 @@
         <div class="img-container">
           <button :onclick="() => $router.push('/')">
             <v-avatar size="32px">
-                <v-img src="@/assets/back-button.svg" alt="Voltar" />
+              <v-img src="@/assets/back-button.svg" alt="Voltar" />
             </v-avatar>
           </button>
         </div>
@@ -17,7 +17,7 @@
           class="card-spacing"
         />
 
-        <div style="display: flex; justify-content: center;"> 
+        <div style="display: flex; justify-content: center">
           <v-img
             src="@/assets/image-choose-test.svg"
             alt="Resolver bugs"
@@ -49,7 +49,6 @@
 </template>
 
 <script setup lang="ts">
-import ButtonGrl from "@/components/ButtonGrl.vue";
 import { onBeforeRouteUpdate, useRoute } from "vue-router";
 import { ref } from "vue";
 import TestSmellCard from "@/components/TestSmellCard.vue";
@@ -128,5 +127,14 @@ onBeforeRouteUpdate(async (to, from) => {
 .link-reset {
   text-decoration: none;
   color: inherit;
+}
+@media only screen and (max-width: 600px) {
+  .row-home {
+    margin: 0;
+  }
+
+  .home-container {
+    padding: 2rem;
+  }
 }
 </style>

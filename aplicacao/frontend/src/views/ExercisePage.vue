@@ -69,7 +69,7 @@ import { Codemirror } from "vue-codemirror";
 import ButtonPopup from "../components/ButtonPopup.vue";
 import { getExercisesbyTheirId } from "@/services/ExerciseService";
 import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
-import { java } from '@codemirror/lang-java';
+import { java } from "@codemirror/lang-java";
 
 const language = [java()];
 const router = useRouter();
@@ -162,7 +162,6 @@ onBeforeRouteUpdate(async (to, from) => {
 </script>
 
 <style scoped>
-
 .title {
   color: #378f37;
 }
@@ -172,7 +171,6 @@ onBeforeRouteUpdate(async (to, from) => {
   padding-bottom: 2rem;
   min-height: 100px;
   border: 4px solid #378f37;
-  
 }
 
 .step-assert {
@@ -183,7 +181,6 @@ onBeforeRouteUpdate(async (to, from) => {
   width: 100%;
   box-sizing: border-box;
   text-align: justify;
-  
 }
 
 .step {
@@ -191,8 +188,6 @@ onBeforeRouteUpdate(async (to, from) => {
   padding-top: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  
-  
 }
 
 .intro-step {
@@ -255,29 +250,6 @@ onBeforeRouteUpdate(async (to, from) => {
   color: #378f37;
 }
 
-
-@media (max-width: 600px) {
-  .description {
-    font-size: 16px;
-    padding: 1rem;
-    margin: 1rem;
-  }
-
-  .step-by-step {
-    font-size: 18px;
-    width: 100%;
-  }
-
-  .title {
-    font-size: 24px;
-  }
-
-  .card-step {
-    padding-bottom: 1rem;
-    font-size: 16px;
-  }
-}
-
 @media (min-width: 601px) and (max-width: 960px) {
   .description {
     font-size: 18px;
@@ -295,6 +267,35 @@ onBeforeRouteUpdate(async (to, from) => {
     height: 55vh !important;
     width: 90% !important;
     margin: 1.5rem 0 0 0 !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .back-button {
+    padding: 1rem 0 0 0.5rem;
+  }
+
+  .step-by-step {
+    font-size: 18px;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .card-step {
+    padding-bottom: 1rem;
+    font-size: 16px;
+  }
+  .description {
+    font-size: 1.1rem;
+  }
+
+  .code-editor {
+    height: 65vh !important;
+    width: 100% !important;
+    margin: 2rem 0 0 2rem !important;
   }
 }
 
@@ -317,5 +318,4 @@ onBeforeRouteUpdate(async (to, from) => {
     margin: 2rem 0 0 2rem !important;
   }
 }
-
 </style>
