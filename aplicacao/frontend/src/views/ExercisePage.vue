@@ -182,6 +182,7 @@ function handleRefactor() {
   width: 100%;
   box-sizing: border-box;
   text-align: justify;
+  overflow-wrap: break-word;
 }
 
 .step-by-step {
@@ -191,6 +192,7 @@ function handleRefactor() {
   width: 100%;
   box-sizing: border-box;
   text-align: justify;
+  overflow-wrap: break-word;
 }
 
 .steps-title {
@@ -201,6 +203,8 @@ function handleRefactor() {
 @media (min-width: 601px) and (max-width: 960px) {
   .description {
     font-size: 18px;
+    margin: 1rem 0 1rem 0;
+    padding: 0;
   }
 
   .step-by-step {
@@ -238,6 +242,8 @@ function handleRefactor() {
   }
   .description {
     font-size: 1.1rem;
+    margin: 1rem 0 1rem 0;
+    padding: 0;
   }
 
   .code-editor {
