@@ -4,12 +4,10 @@
       <!-- Coluna da Esquerda: Texto de Apresentação -->
       <v-col cols="12" md="6" class="left-column">
         <h2 class="text-welcome">
-          Bem-vindo ao <span class="name-terts">TERTS</span>, seu tutor de
-          ensino!
+          {{ t('homePage.title') }}
         </h2>
         <p class="text-description">
-          Aqui você vai encontrar exercícios de teste de unidade para a
-          refatoração de <i>test smells</i>.
+          {{ t('homePage.subtitle') }}
         </p>
         <div style="display: flex; justify-content: center">
           <v-img
@@ -22,7 +20,7 @@
 
       <!-- Coluna da Direita: Botões de Seleção de Test Smell -->
       <v-col cols="12" md="5" class="right-column">
-        <p class="text-choice">Escolha o tipo de Test Smell</p>
+        <p class="text-choice">{{ t('homePage.chooseSmell') }}</p>
         <v-col
           v-for="(testSmell, index) in testSmells"
           :key="index"
@@ -47,7 +45,9 @@
 import { ref, onMounted } from "vue";
 import { getTestSmells } from "@/services/TestSmellService";
 import { TestSmell } from "@/models/TestSmellModel";
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const testSmells = ref<TestSmell[]>([]);
 
 onMounted(async () => {

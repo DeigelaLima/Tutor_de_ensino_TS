@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true, // Permitir o uso do Json
     "target": "esnext",
     "module": "esnext",
     "strict": true,
