@@ -1,12 +1,10 @@
-
-import { TestSmells } from '../testSmellsTypes';
-
+import { TestSmells } from '../testSmellsTypes';  
 
 export function getTestSmellById(id: number) {
-    const testSmell = TestSmells.find((ts) => ts.id === id);
+    const testSmell = TestSmells.value.find((ts) => ts.id === id);
     return testSmell;
 }
 
 export function getTestSmells() {
-    return TestSmells
+    return TestSmells.value;
 }

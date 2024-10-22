@@ -1,0 +1,68 @@
+{
+  "homePage": {
+      "title": "Welcome to the teaching tutor!",
+      "subtitle": "Here you'll find unit testing exercises for refactoring test smells.",
+      "chooseSmell": "Choose a type of Test Smell to get started:",
+      "buttons": {
+          "changeToPortuguese": "Switch to Portuguese",
+          "changeToEnglish": "Switch to English"
+      }
+  },
+  "testSmellsTypes": {
+      "assertionRoulette": {
+          "name": "Assertion Roulette",
+          "description": "This occurs when a test method has several assertions without explanation, making it difficult to identify the cause of an error in the event of failure. To refactor, you should include explanatory messages as optional arguments in the assertions, a best practice to improve the understanding of the tests, clarifying the purpose of each assertion and facilitating code maintenance."
+      },
+      "duplicateAssert": {
+          "name": "Duplicate Assert",
+          "description": "This occurs when a test method repeats the same condition several times within the method itself. To avoid this, it is advisable to refactor by creating a new test method if the same condition needs to be checked with different values. This helps organise the code and avoids redundancies."
+      },
+      "eagerTest": {
+          "name": "Eager Test",
+          "description": "This occurs when a test method checks several methods of the object being tested. These tests are difficult to understand and read, making them less effective as documentation. To resolve this situation, we recommend refactoring, extracting the test method and separating the assertions into separate test methods."
+      },
+      "ignoredTest": {
+          "name": "Ignored Test",
+          "description": "This occurs when a test method is suppressed from execution. However, this Ignored Test approach can result in overheads during compile time, as well as increasing complexity and making the code more difficult to understand. By using the @Ignore() annotation, there is a risk of leaving gaps in test coverage, as crucial parts of the code may not be properly checked. Refactoring the Ignored Test consists of removing the @Ignore() annotation from the unit test."
+      }
+  },
+  "aboutPage": {
+        "about": "About",
+        "aboutTutor": "The Teaching Tutor is an educational application dedicated to teaching unit test refactoring techniques, focussing on the elimination of \"smells\" to train undergraduate students in technology areas. The tool offers effective learning about four categories of \"test smells\" - Assertion Roulette, Duplicate Assert, Ignored Test and EagerTest - through 12 specific exercises. Students have the autonomy to choose the category of exercises they want. The tool's feedback reflects the refactoring carried out by the student on the test code. Each exercise provides a detailed description of the production code associated with the test and an explanation of the test itself, seeking a comprehensive understanding of the refactoring context. In addition, the tool offers a step-by-step guide to refactoring each \"smell\" identified in the test, essential for providing clarity and facilitating the learning process in refactoring practices.",
+        "requirements": "System requirements",
+        "requirementsInfo": "To use the Teaching Tutor tool you must have the Chrome or Firefox browser installed on your computer and then click on the link to access the Teaching Tutor:",
+        "datasets": "Datasets available",
+        "datasetsInfo": "The Datasets that the Teaching Tutor is using are available in the following repositories:",
+        "developmentTeam": "Development Team",
+        "developmentTeamInfo": {
+            "deigela": "Computer Science undergraduate, PIBIC scholarship holder and front-end developer.",
+            "joao": "Undergraduate student in Software Engineering, PIBITI scholarship holder and front-end developer.",
+            "lara": "Undergraduate student in Software Engineering, PIBIC scholarship holder and front-end developer.",
+            "victor": "Undergraduate student in Software Engineering, PIBITI scholarship holder and back-end developer.",
+            "carla": "Supervisor, professor at the Federal University of Ceará - Quixadá Campus."
+        },
+        "formsOfContact": "Forms of contact",
+        "meansOfContact": "Means of contact",
+        "close": "Close"
+    },
+    "chooseExercises":{
+        "exercise": "Exercise" 
+    },
+    "exercisePage": {
+        "introStep": "To start refactoring the unit test that contains the \"test smell\", you should take the following steps:",
+        "stepsTitle": "Step by step",
+        "refactorText": "After finalising the step-by-step, check here if you got it right!",
+        "refactor": "Refactor"
+    },
+    "buttonPopup": {
+        "congratulations": "Congratulations",
+        "successTextOne": "Great job!",
+        "successTextTwo": "The test smell has been successfully refactored, making the test code cleaner.",
+        "next": "Next",
+
+        "fail": "What a pity :(",
+        "failTextOne": "There's something wrong...",
+        "failTextTwo": "Try again following the step-by-step instructions.",
+        "close": "Close"
+    }
+}

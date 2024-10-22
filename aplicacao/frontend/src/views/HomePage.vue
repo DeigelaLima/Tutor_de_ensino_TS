@@ -5,23 +5,18 @@
         <!-- Coluna da esquerda para o texto -->
         <v-col cols="12" sm="6">
           <v-card-text class="text-left-bemVindo">
-            <h2>Bem-vindo ao tutor de ensino!</h2>
+            <h2>{{ t('homePage.title') }}</h2>
           </v-card-text>
           <v-card-text class="text-left-refatoracao">
             <p>
-              Aqui você vai encontrar exercícios de teste de unidade<br />
-              para a refatoração de test smells.
+              {{ t('homePage.subtitle') }}
             </p>
           </v-card-text>
         </v-col>
 
         <!-- Coluna da direita para a imagem -->
         <v-col cols="12" sm="5">
-          <v-img
-            src="@/assets/Group6homePage.svg"
-            alt="Bem-vindo"
-            class="image-size ml-16"
-          />
+          <v-img src="@/assets/Group6homePage.svg" alt="Bem-vindo" class="image-size ml-16" />
         </v-col>
       </v-row>
     </v-container>
@@ -29,20 +24,12 @@
     <v-footer app>
       <v-col>
         <v-col class="choice">
-          <p>Escolha um tipo de Test Smell para começar:</p>
+          <p>{{ t('homePage.chooseSmell') }}</p>
         </v-col>
         <v-row justify="center">
           <v-col class="smell-type" cols="3" v-for="(testSmell, index) in testSmells" :key="index">
-            <router-link
-              :to="`/chooseexercise/${testSmell.id}`"
-              class="text-decoration-none text-reset"
-            >
-              <v-btn
-                block
-                rounded="lg"
-                size="large"
-                class="green-button"
-              >
+            <router-link :to="`/chooseexercise/${testSmell.id}`" class="text-decoration-none text-reset">
+              <v-btn block rounded="lg" size="large" class="green-button">
                 <p>
                   {{ testSmell.name }}
                 </p>
@@ -59,6 +46,9 @@
 import { TestSmell } from "./../models/TestSmellModel";
 import { onMounted, ref } from "vue";
 import { getTestSmells } from "@/services/TestSmellService";
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const testSmells = ref<TestSmell[]>([]);
 
@@ -71,6 +61,7 @@ onMounted(async () => {
 .bar-nav {
   background-color: rgba(86, 175, 119, 1);
 }
+
 .home-container {
   background-color: white;
 }
@@ -94,6 +85,7 @@ onMounted(async () => {
   align-items: center;
   justify-content: center;
 }
+
 .text-left-bemVindo {
   font-size: 35px;
   text-align: left;
@@ -108,10 +100,11 @@ onMounted(async () => {
   text-align: center;
   color: black;
 }
+
 .choice {
   font-size: 30px;
   color: black;
   text-align: center;
-  margin-bottom:  20px;
+  margin-bottom: 20px;
 }
 </style>

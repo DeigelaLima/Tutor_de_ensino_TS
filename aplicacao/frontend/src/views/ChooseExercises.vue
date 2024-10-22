@@ -37,10 +37,13 @@
 <script setup lang="ts">
 import ButtonGrl from "@/components/ButtonGrl.vue";
 import { onBeforeRouteUpdate, useRoute } from "vue-router";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import TestSmellCard from "@/components/TestSmellCard.vue";
 import { TestSmell } from "@/models/TestSmellModel";
 import { getTestSmellById } from "@/services/TestSmellService";
+import { useI18n } from 'vue-i18n'; 
+
+const { locale } = useI18n(); // Acessando o locale (idioma atual)
 
 const route = useRoute();
 let id = Number(route.params.id);
@@ -51,6 +54,7 @@ let numberExercise = 0;
 async function getTestSmell(id: number) {
   const result = getTestSmellById(id);
   testSmellChoose.value = result;
+  numberExercise = 0;
 }
 
 getTestSmell(id);
@@ -60,6 +64,10 @@ onBeforeRouteUpdate(async (to, from) => {
     id = Number(to.params.id);
     getTestSmell(id);
   }
+});
+
+watch(locale, () => { // Verificar a mudança da linguagem e buscar o texto traduzido
+  getTestSmell(id);
 });
 </script>
 

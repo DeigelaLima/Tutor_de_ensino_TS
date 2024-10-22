@@ -2,60 +2,41 @@
   <v-container fluid class="container">
     <v-row>
       <v-row class="back-button">
-        <BackButton
-          :onclick="() => router.push(`/chooseexercise/${idSmell}`)"
-        />
+        <BackButton :onclick="() => router.push(`/chooseexercise/${idSmell}`)" />
       </v-row>
       <v-row class="header">
         <h1 class="title">{{ title }}</h1>
         <p class="description">{{ description }}</p>
       </v-row>
       <v-col>
-        <Codemirror
-          :model-value="exerciseChoose"
-          style="height: 65vh; width: 50vw; margin: 2rem 0 0 2rem"
-          @change="(value) => handleChange(value)"
-          :extensions="language"
-        />
+        <Codemirror :model-value="exerciseChoose" style="height: 65vh; width: 50vw; margin: 2rem 0 0 2rem"
+          @change="(value) => handleChange(value)" :extensions="language" />
       </v-col>
       <v-col>
         <v-card-text align="center">
           <h2 class="intro-step">
-            Para iniciar a refatoração do teste de unidade que contém o "test
-            smell", você deve seguir os seguintes passos:
+            {{ t('exercisePage.introStep') }}
           </h2>
           <div class="card-step">
-            <h1 class="steps-title">Passo a passo</h1>
+            <h1 class="steps-title">{{ t('exercisePage.stepsTitle') }}</h1>
             <ul class="step-by-step">
-              <p
-                :key="step"
-                :class="checkIfNeedsPasso(step) ? 'step' : ''"
-                v-for="step in formatedSteps"
-              >
+              <p :key="step" :class="checkIfNeedsPasso(step) ? 'step' : ''" v-for="step in formatedSteps">
                 {{ checkIfNeedsPasso(step) + step }}
               </p>
             </ul>
             <ul class="step-by-step">
-              <p
-                class="step-assert"
-                :key="assert"
-                v-for="assert in formatedAsserts"
-              >
+              <p class="step-assert" :key="assert" v-for="assert in formatedAsserts">
                 {{ "Assertion" + assert }}
               </p>
             </ul>
           </div>
         </v-card-text>
         <h2 class="text-button-refactor">
-          Após finalizar o passo a passo, confirme aqui se você acertou!
+          {{ t('exercisePage.refactorText') }}
         </h2>
         <v-row class="foot-buttons" justify="space-around">
-          <ButtonPopup
-            text="Refatorar"
-            :disable="refactorState"
-            :onclick="handleRefactor"
-            :refactor="feedback"
-          />
+          <ButtonPopup :text="t('exercisePage.refactor')" :disable="refactorState" :onclick="handleRefactor"
+            :refactor="feedback" />
         </v-row>
       </v-col>
     </v-row>
@@ -64,12 +45,15 @@
 
 <script setup lang="ts">
 import BackButton from "@/components/BackButton.vue";
-import { ref } from "vue";
+import { ref, computed, watch } from "vue";
 import { Codemirror } from "vue-codemirror";
 import ButtonPopup from "../components/ButtonPopup.vue";
 import { getExercisesbyTheirId } from "@/services/ExerciseService";
 import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 import { java } from '@codemirror/lang-java';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
 
 const language = [java()];
 const router = useRouter();
@@ -81,11 +65,17 @@ const refactorState = ref(true);
 const refactoredExercise = ref<string>("");
 const userExercise = ref<string>("");
 const title = ref<string>();
-const description = ref<string>();
 const feedback = ref(false);
-const steps = ref<string>();
+const result = ref<any>(null);
+
+const description = computed(() => result.value?.description[locale.value]);
+const steps = computed(() => result.value?.refactoration[locale.value]);
+
 const formatedSteps = ref<string[]>([]);
 const formatedAsserts = ref<string[]>([]);
+
+const stepKeyword = computed(() => locale.value === 'pt' ? 'Passo' : 'Step');
+const assertionKeyword = 'Assertion';
 
 function handleRefactor() {
   if (checkRefactor()) {
@@ -110,7 +100,7 @@ function handleChange(value: string) {
 
 function formatAssertString(text: string | undefined) {
   if (text === undefined) return;
-  let subArrays = text.split("Assertion");
+  let subArrays = text.split(assertionKeyword);
   subArrays.shift();
   formatedAsserts.value = subArrays;
 }
@@ -120,38 +110,44 @@ function formatStepString(text: string | undefined) {
     return;
   }
   let subArrays;
-  if (text.indexOf("Assertion") === -1) {
-    subArrays = text.split("Passo");
+  if (text.indexOf(assertionKeyword) === -1) {
+    subArrays = text.split(stepKeyword.value);
     subArrays.shift();
     formatedSteps.value = subArrays.map((step) => step.split("\n")).flat();
   } else {
-    let newText: string = text.substring(0, text.indexOf("Assertion"));
-    subArrays = newText.split("Passo");
+    let newText: string = text.substring(0, text.indexOf(assertionKeyword));
+    subArrays = newText.split(stepKeyword.value);
     subArrays.shift();
     formatedSteps.value = subArrays.map((step) => step.split("\n")).flat();
   }
 }
 
 function checkIfNeedsPasso(passo: string) {
-  const palavras = passo.split("");
-  if (palavras.length > 0 && /^\d+$/.test(palavras[1])) {
-    return "Passo";
+  const trimmedPasso = passo.trim();
+  if (/^\d+/.test(trimmedPasso)) {
+    return stepKeyword.value;
   }
   return "";
 }
 
 async function fetchExercise(id: number) {
-  const result = await getExercisesbyTheirId(id);
-  exerciseChoose.value = result.text;
-  refactoredExercise.value = result.textRefactored;
-  title.value = result.categoryName;
-  description.value = result.description;
-  steps.value = result.refactoration;
-  formatStepString(steps.value);
-  formatAssertString(steps.value);
+  result.value = await getExercisesbyTheirId(id);
+  exerciseChoose.value = result.value.text;
+  refactoredExercise.value = result.value.textRefactored;
+  title.value = result.value.categoryName;
 }
 
 fetchExercise(id);
+
+watch(steps, (newSteps) => {
+  formatStepString(newSteps);
+  formatAssertString(newSteps);
+});
+
+watch(locale, (newLocale) => {
+  formatStepString(steps.value);
+  formatAssertString(steps.value);
+});
 
 onBeforeRouteUpdate(async (to, from) => {
   if (to.params.id !== from.params.id) {
@@ -173,14 +169,17 @@ onBeforeRouteUpdate(async (to, from) => {
   padding-bottom: 1rem;
   padding-left: 3rem;
 }
+
 .step {
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
+
 .intro-step {
   text-align: justify;
   padding-bottom: 2rem;
 }
+
 .foot-buttons {
   margin-top: 0rem;
   margin-bottom: 2rem;
