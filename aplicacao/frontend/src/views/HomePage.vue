@@ -4,10 +4,10 @@
       <!-- Coluna da Esquerda: Texto de Apresentação -->
       <v-col cols="12" md="6" class="left-column">
         <h2 class="text-welcome">
-          {{ t('homePage.title') }}
+          {{ t("homePage.title") }}
         </h2>
         <p class="text-description">
-          {{ t('homePage.subtitle') }}
+          {{ t("homePage.subtitle") }}
         </p>
         <div style="display: flex; justify-content: center">
           <v-img
@@ -20,7 +20,7 @@
 
       <!-- Coluna da Direita: Botões de Seleção de Test Smell -->
       <v-col cols="12" md="5" class="right-column">
-        <p class="text-choice">{{ t('homePage.chooseSmell') }}</p>
+        <p class="text-choice">{{ t("homePage.chooseSmell") }}</p>
         <v-col
           v-for="(testSmell, index) in testSmells"
           :key="index"
@@ -45,13 +45,13 @@
 import { ref, onMounted } from "vue";
 import { getTestSmells } from "@/services/TestSmellService";
 import { TestSmell } from "@/models/TestSmellModel";
-import { useI18n } from 'vue-i18n';
+import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 const testSmells = ref<TestSmell[]>([]);
 
 onMounted(async () => {
-  testSmells.value = getTestSmells();
+  testSmells.value = getTestSmells().value;
 });
 </script>
 
