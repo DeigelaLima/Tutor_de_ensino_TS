@@ -1,26 +1,30 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { getExercisesbyTheirId } from "@/services/ExerciseService";
+import { useI18n } from 'vue-i18n';
 
 export const useExerciseStore = defineStore("exerciseStore", () => {
+    const { locale } = useI18n();
+
     const exerciseChoose = ref<string>("");
     const refactoredExercise = ref<string>("");
     const userExercise = ref<string>("");
     const title = ref<string>("");
-    const description = ref<string>("");
     const feedback = ref(false);
     const refactorState = ref(true);
-    const formatedSteps = ref<string[]>([]);
-    const formatedAsserts = ref<string[]>([]);
+    const result = ref<any>(null);
+
+    const description = computed(() => result.value?.description[locale.value]);
+    const steps = computed(() => result.value?.refactoration[locale.value]);
+
+    const stepKeyword = computed(() => locale.value === 'pt' ? 'Passo' : 'Step');
+    const assertionKeyword = 'Assertion'; // Definido como string constante
 
     async function fetchExercise(id: number) {
-        const result = await getExercisesbyTheirId(id);
-        exerciseChoose.value = result.text;
-        refactoredExercise.value = result.textRefactored;
-        title.value = result.categoryName;
-        description.value = result.description;
-        formatStepString(result.refactoration);
-        formatAssertString(result.refactoration);
+        result.value = await getExercisesbyTheirId(id);
+        exerciseChoose.value = result.value.text;
+        refactoredExercise.value = result.value.textRefactored;
+        title.value = result.value.categoryName;
     }
 
     function checkRefactor() {
@@ -32,28 +36,32 @@ export const useExerciseStore = defineStore("exerciseStore", () => {
     }
 
     function formatAssertString(text: string | undefined) {
-        if (text === undefined) return;
-        const subArrays = text.split("Assertion");
+        if (text === undefined) return [];
+        const subArrays = text.split(assertionKeyword);
         subArrays.shift();
-        formatedAsserts.value = subArrays;
+        return subArrays;
     }
 
     function formatStepString(text: string | undefined) {
         if (text === undefined) {
-            return;
+            return [];
         }
         let subArrays;
-        if (text.indexOf("Assertion") === -1) {
-            subArrays = text.split("Passo");
+        if (text.indexOf(assertionKeyword) === -1) {
+            subArrays = text.split(stepKeyword.value);
             subArrays.shift();
-            formatedSteps.value = subArrays.map((step) => step.split("\n")).flat();
+            return subArrays;
         } else {
-            const newText: string = text.substring(0, text.indexOf("Assertion"));
-            subArrays = newText.split("Passo");
+            const newText: string = text.substring(0, text.indexOf(assertionKeyword));
+            subArrays = newText.split(stepKeyword.value);
             subArrays.shift();
-            formatedSteps.value = subArrays.map((step) => step.split("\n")).flat();
+            return subArrays;
         }
     }
+    
+
+    const formatedSteps = computed(() => formatStepString(steps.value));
+    const formatedAsserts = computed(() => formatAssertString(steps.value));
 
     return {
         exerciseChoose,
@@ -67,5 +75,9 @@ export const useExerciseStore = defineStore("exerciseStore", () => {
         formatedAsserts,
         fetchExercise,
         checkRefactor,
+        result,
+        steps,
+        stepKeyword,
+        assertionKeyword,
     };
 });

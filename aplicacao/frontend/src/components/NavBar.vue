@@ -6,18 +6,26 @@
       </v-avatar>
     </button>
 
-    <!-- PT-BR -->
-    <button @click="changeLanguage('pt')">PT-BR</button>
+    <button @click="changeLanguage('pt')">
+      <v-avatar size="24">
+        <v-img src="@/assets/brasil.png" alt="Brasil" />
+      </v-avatar>
+    </button>
 
-    <!-- EN-GB -->
-    <button @click="changeLanguage('en')">ES</button>
+
+    <button @click="changeLanguage('en')">
+      <v-avatar size="24">
+        <v-img src="@/assets/estados-unidos.png" alt="Estados Unidos" />
+      </v-avatar>
+
+    </button>
 
     <!-- Sobre -->
     <button class="about-info" @click="$router.push('/about')">
       <v-avatar size="24">
         <v-img src="@/assets/info-icon.svg" alt="Logo-Sobre" />
       </v-avatar>
-      <v-card-text class="text-right-sobre">Sobre</v-card-text>
+      <v-card-text class="text-right-sobre">{{ t('aboutPage.about') }}</v-card-text>
     </button>
   </v-app-bar>
 </template>
@@ -25,7 +33,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 
 // Função para alterar o idioma
 function changeLanguage(lang: string) {
