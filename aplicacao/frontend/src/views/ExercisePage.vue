@@ -2,60 +2,44 @@
   <v-container fluid class="container">
     <v-row>
       <v-row class="back-button">
-        <BackButton
-          :onclick="() => router.push(`/chooseexercise/${idSmell}`)"
-        />
+        <BackButton :onclick="() => router.push(`/chooseexercise/${idSmell}`)" />
       </v-row>
       <v-row class="header">
         <h1 class="title">{{ exerciseStore.title }}</h1>
         <p class="description">{{ exerciseStore.description }}</p>
       </v-row>
       <v-col cols="12" md="6">
-        <Codemirror
-          :model-value="exerciseStore.exerciseChoose"
-          class="code-editor"
-          @change="(value) => handleChange(value)"
-          :extensions="language"
-        />
+        <Codemirror :model-value="exerciseStore.exerciseChoose" class="code-editor"
+          @change="(value) => handleChange(value)" :extensions="language" />
       </v-col>
       <v-col cols="12" md="6">
         <v-card-text align="center">
           <h2 class="intro-step">
-            Para iniciar a refatoração do teste de unidade que contém o "test
-            smell", você deve seguir os seguintes passos:
+            {{ t('exercisePage.introStep') }}
           </h2>
           <div class="card-step">
-            <h1 class="steps-title">Passo a passo</h1>
+            <h1 class="steps-title">{{ t('exercisePage.stepsTitle') }}</h1>
             <ul class="step-by-step">
-              <p
-                :key="step"
-                :class="checkIfNeedsPasso(step) ? 'step' : ''"
-                v-for="step in exerciseStore.formatedSteps"
-              >
+              <p 
+              :key="step" 
+              :class="checkIfNeedsPasso(step) ? 'step' : ''" 
+              v-for="step in exerciseStore.formatedSteps">
                 {{ checkIfNeedsPasso(step) + step }}
               </p>
             </ul>
             <ul class="step-by-step">
-              <p
-                class="step-assert"
-                :key="assert"
-                v-for="assert in exerciseStore.formatedAsserts"
-              >
-                {{ "Assertion" + assert }}
+              <p class="step-assert" :key="assert" v-for="assert in exerciseStore.formatedAsserts">
+                {{ exerciseStore.assertionKeyword + assert }}
               </p>
             </ul>
           </div>
         </v-card-text>
         <h2 class="text-button-refactor">
-          Após finalizar o passo a passo, confirme aqui se você acertou!
+          {{ t('exercisePage.refactorText') }}
         </h2>
         <v-row class="foot-buttons" justify="space-around">
-          <ButtonPopup
-            text="Refatorar"
-            :disable="exerciseStore.refactorState"
-            :onclick="handleRefactor"
-            :refactor="exerciseStore.feedback"
-          />
+          <ButtonPopup :text="t('exercisePage.refactor')" :disable="exerciseStore.refactorState"
+            :onclick="handleRefactor" :refactor="exerciseStore.feedback" />
         </v-row>
       </v-col>
     </v-row>
@@ -69,6 +53,9 @@ import ButtonPopup from "../components/ButtonPopup.vue";
 import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 import { java } from "@codemirror/lang-java";
 import { useExerciseStore } from "@/stores/exerciseStore";
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const language = [java()];
 const router = useRouter();
@@ -93,9 +80,9 @@ function handleChange(value: string) {
 }
 
 function checkIfNeedsPasso(passo: string) {
-  const palavras = passo.split("");
-  if (palavras.length > 0 && /^\d+$/.test(palavras[1])) {
-    return "Passo";
+  const trimmedPasso = passo.trim();
+  if (/^\d+/.test(trimmedPasso)) {
+    return exerciseStore.stepKeyword;
   }
   return "";
 }
@@ -110,9 +97,14 @@ function handleRefactor() {
 </script>
 
 <style scoped>
+.step-by-step p {
+  white-space: pre-wrap;
+}
+
 .title {
   color: #378f37;
 }
+
 .card-step {
   background-color: #ffffff;
   border-radius: 30px;
@@ -240,6 +232,7 @@ function handleRefactor() {
     padding-bottom: 1rem;
     font-size: 16px;
   }
+
   .description {
     font-size: 1.1rem;
     margin: 1rem 0 1rem 0;

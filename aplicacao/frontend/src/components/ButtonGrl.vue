@@ -1,10 +1,14 @@
 <template>
   <v-btn block rounded="xs" class="green-button">
-    Exercício {{ numberExercise }}
+    {{t('chooseExercises.exercise')}} {{ numberExercise }}
   </v-btn>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 defineProps<{
   numberExercise: number;
 }>();

@@ -14,14 +14,14 @@
         size="small"
         @click="reveal = true"
       >
-        Formas de contato
+      {{t('aboutPage.formsOfContact')}}
       </v-btn>
     </v-card-actions>
 
     <v-expand-transition>
       <v-card v-if="reveal" class="v-card--reveal" style="height: 100%">
         <v-card-text class="pb-0">
-          <p class="text-h4 text--primary">Meios de contato</p>
+          <p class="text-h4 text--primary">{{t('aboutPage.meansOfContact')}}</p>
           <div class="contact-div">
             <div class="contact-line">
               <v-img src="@/assets/email-svgrepo-com.svg" alt="Logo Gmail" />
@@ -42,7 +42,7 @@
         </v-card-text>
         <v-card-actions class="pb-0">
           <v-btn variant="text" color="teal-accent-4" @click="reveal = false">
-            Fechar
+            {{t('aboutPage.close')}}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -51,7 +51,9 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const reveal = ref(false);
 
 defineProps<{

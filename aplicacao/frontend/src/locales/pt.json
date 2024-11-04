@@ -1,0 +1,68 @@
+{
+    "homePage": {
+        "title": "Bem-vindo ao tutor de ensino!",
+        "subtitle": "Aqui você vai encontrar exercícios de teste de unidade para a refatoração de test smells.",
+        "chooseSmell": "Escolha um tipo de Test Smell para começar:",
+        "buttons": {
+            "changeToPortuguese": "Mudar para Português",
+            "changeToEnglish": "Mudar para English"
+        }
+    },
+    "testSmellsTypes": {
+        "assertionRoulette": {
+            "name": "Assertion Roulette",
+            "description": "Ocorre quando um método de teste possui várias assertions sem explicação, dificultando a identificação da causa de um erro em caso de falha. Para refatorar, deve-se incluir mensagens explicativas como argumentos opcionais nas assertions, uma prática recomendada para melhorar a compreensão dos testes, esclarecendo o propósito de cada assertion e facilitando a manutenção do código."
+        },
+        "duplicateAssert": {
+            "name": "Duplicate Assert",
+            "description": "Ocorre quando um método de teste repete a mesma condição várias vezes dentro do próprio método. Para evitar isso, é aconselhável refatorar, criando um novo método de teste se a mesma condição precisa ser verificada com valores diferentes. Isso contribui para a organização do código e evita redundâncias."
+        },
+        "eagerTest": {
+            "name": "Eager Test",
+            "description": "Ocorre quando um método de teste verifica diversos métodos do objeto que está sendo testado. Esses testes são de difícil compreensão e leitura, tornando-se menos eficazes como documentação. Para solucionar essa situação, recomenda-se refatorar, extraindo o método de teste e separando os assertions em métodos de teste distintos."
+        },
+        "ignoredTest": {
+            "name": "Ignored Test",
+            "description": "Ocorre quando um método de teste é suprimido da execução. Contudo, essa abordagem de Ignored Test pode resultar em sobrecarga durante o tempo de compilação, além de aumentar a complexidade e dificultar a compreensão do código. Ao utilizar a anotação @Ignore(), há o risco de deixar lacunas na cobertura dos testes, pois partes cruciais do código podem não ser adequadamente verificadas. A refatoração do Ignored Test consiste em remover a anotação @Ignore() do teste de unidade."
+        }
+    },
+    "aboutPage": {
+        "about": "Sobre",
+        "aboutTutor": "O Tutor de Ensino é uma aplicação educacional dedicada ao ensino de técnicas de refatoração de testes de unidades, focalizando na eliminação de \"smells\" para capacitar alunos de graduação nas áreas de tecnologia. A ferramenta oferece aprendizado efetivo sobre quatro categorias de \"test smells\" - Assertion Roulette, Duplicate Assert, Ignored Test e EagerTest - por meio de 12 exercícios específicos. Os alunos têm autonomia para escolher a categoria de exercícios desejada. O feedback da ferramenta reflete a refatoração realizada pelo aluno no código de teste. Cada exercício fornece uma descrição detalhada do código de produção associado ao teste e uma explicação sobre o próprio teste, buscando uma compreensão abrangente do contexto de refatoração. Além disso, a ferramenta oferece um guia passo a passo para a refatoração de cada \"smell\" identificado no teste, essencial para proporcionar clareza e facilitar o processo de aprendizagem nas práticas de refatoração.",
+        "requirements": "Requisitos do sistema",
+        "requirementsInfo": "Para utilizar a ferramenta Tutor de Ensino você deve ter instalado o navegador Chrome ou Firefox em seu computador e em seguida clicar no link para ter acesso ao Tutor de Ensino:",
+        "datasets": "Datasets disponíveis",
+        "datasetsInfo": "Os Datasets que o Tutor de Ensino está utilizando estão disponíveis nos seguintes repositórios:",
+        "developmentTeam": "Equipe de Desenvolvimento",
+        "developmentTeamInfo": {
+            "deigela": "Graduanda em Ciência da Computação, bolsista PIBIC e desenvolvedora front-end.",
+            "joao": "Graduando em Engenharia de Software, bolsista PIBITI e desenvolvedor front-end.",
+            "lara": "Graduanda em Engenharia de Software, bolsista PIBIC e desenvolvedora front-end.",
+            "victor": "Graduando em Engenharia de Software, bolsista PIBITI e desenvolvedor back-end.",
+            "carla": "Orientadora, professora na Universidade Federal do Ceará - Campus Quixadá."
+        },
+        "formsOfContact": "Formas de contato",
+        "meansOfContact": "Meios de contato",
+        "close": "Fechar"
+    },
+    "chooseExercises":{
+        "exercise": "Exercício" 
+    },
+    "exercisePage": {
+        "introStep": "Para iniciar a refatoração do teste de unidade que contém o \"test smell\", você deve seguir os seguintes passos:",
+        "stepsTitle": "Passo a passo",
+        "refactorText": "Após finalizar o passo a passo, confirme aqui se você acertou!",
+        "refactor": "Refatorar"
+    },
+    "buttonPopup": {
+        "congratulations": "Parabéns",
+        "successTextOne": "Excelente trabalho!",
+        "successTextTwo": "O test smell foi refatorado com sucesso, deixando o código de teste mais limpo.",
+        "next": "Próximo",
+
+        "fail": "Que pena :(",
+        "failTextOne": "Tem algo errado...",
+        "failTextTwo": "Tente novamente seguindo o passo a passo.",
+        "close": "Fechar"
+    }
+}

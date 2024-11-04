@@ -12,28 +12,33 @@
     </template>
 
     <template v-if="refactor" v-slot:default="{}">
-      <v-card class="success" title="Parabéns!">
+      <v-card class="success" :title="t('buttonPopup.congratulations')">
         <v-card-text class="text">
-          Excelente trabalho!<br />O test smell foi refatorado com sucesso,
-          deixando o código de teste mais limpo.
+          {{ t('buttonPopup.successTextOne') }}
+          <br />
+          {{ t('buttonPopup.successTextTwo') }}
         </v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn text="Próximo" @click="() => router.push(`/chooseexercise/${idSmell}`)"></v-btn>
+          <v-btn :text="t('buttonPopup.next')" @click="() => router.push(`/chooseexercise/${idSmell}`)"></v-btn>
         </v-card-actions>
       </v-card>
     </template>
 
     <template v-else v-slot:default="{ isActive }">
-      <v-card class="fail" title="Que pena :(">
+      <v-card class="fail" :title="t('buttonPopup.fail')">
         <v-card-text class="text">
-          Tem algo errado...<br />Tente novamente seguindo o passo a passo.
+          {{ t('buttonPopup.failTextOne') }}
+          <br />
+          {{ t('buttonPopup.failTextTwo') }}
         </v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="green-button" @click="isActive.value = false">Fechar</v-btn>
+          <v-btn class="green-button" @click="isActive.value = false">          
+            {{ t('buttonPopup.close') }}
+          </v-btn>
         </v-card-actions>
       </v-card>
     </template>
@@ -43,7 +48,9 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { useRoute } from "vue-router";
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const route = useRoute();
 const idSmell = route.params.id;
 const router = useRouter();
